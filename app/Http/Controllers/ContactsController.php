@@ -15,7 +15,7 @@ class ContactsController extends Controller
 
 	public function store(ContactsRequest $request)
 	{
-		$data = $request->validated();
+		$request->validated();
 
 		$mail = new PHPMailer(true);
 
@@ -35,12 +35,12 @@ class ContactsController extends Controller
 			$mail->SetFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 			$mail->AddReplyTo(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 
-			$mail->AddAddress($data->email, $data->name);
+			$mail->AddAddress($request->email, $request->name);
 
 			$mail->IsHTML(TRUE);
 
-			$mail->Subject = $data->subject;
-			$mail->Body    = $data->message;
+			$mail->Subject = $request->subject;
+			$mail->Body    = $request->message;
 
 			$mail->Send();
 
