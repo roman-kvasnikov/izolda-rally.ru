@@ -1,11 +1,30 @@
 {
+  "_axios-XZeItPRN.js": {
+    "file": "assets/axios-XZeItPRN.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-w40geAFS.js",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
   "resources/js/app.js": {
     "css": [
       "assets/app-N5U7Yxbt.css"
     ],
-    "file": "assets/app-AfCLuoNH.js",
+    "file": "assets/app-P4YzKOfD.js",
+    "imports": [
+      "_axios-XZeItPRN.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/bootstrap.js": {
+    "file": "assets/bootstrap-Z1dPFCnl.js",
+    "imports": [
+      "_axios-XZeItPRN.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/bootstrap.js"
   },
   "resources/sass/app.scss": {
     "file": "assets/app-lhA9k1qk.css",
