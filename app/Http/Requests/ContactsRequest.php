@@ -25,7 +25,7 @@ class ContactsRequest extends FormRequest
 			'name'		=> 'required|string|min:5|max:100',
 			'email'		=> 'required|string|email:rfc,dns',
 			'subject'	=> 'required|string|min:10|max:200',
-			'message'	=> 'required|string|min:100|max:10000'
+			'message'	=> 'required|string|min:20|max:10000'
 		];
 	}
 
@@ -42,7 +42,7 @@ class ContactsRequest extends FormRequest
 			'email.email' => 'Не верный формат E-Mail!',
 			'subject.min' => 'Тема сообщения должна содержать больше 10 символов!',
 			'subject.max' => 'Тема сообщения должна содержать не больше 200 символов!',
-			'message.min' => 'Ваше сообщение должно содержать больше 100 символов!',
+			'message.min' => 'Ваше сообщение должно содержать больше 20 символов!',
 			'message.max' => 'Ваше сообщение должно содержать не больше 10000 символов!'
 		];
 	}

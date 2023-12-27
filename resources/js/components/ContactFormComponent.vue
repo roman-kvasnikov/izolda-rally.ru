@@ -1,23 +1,29 @@
 <template>
 	<div class="contacts-form">
-		<div class="input name" :class="{ 'error': errors.name }">
+		<div class="input name" :class="[errors.name ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-user"></i></span>
 			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name" />
+			<span v-if="errors.name"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
 		</div>
-		<div class="input email" :class="{ 'error': errors.email }">
+		<div class="input email" :class="[errors.email ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-at"></i></span>
 			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" />
+			<span v-if="errors.email"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
 		</div>
-		<div class="input subject w-100" :class="{ 'error': errors.subject }">
+		<div class="input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-envelope"></i></span>
 			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" />
+			<span v-if="errors.subject"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
 		</div>
-		<div class="input message" :class="{ 'error': errors.message }">
+		<div class="input message" :class="[errors.message ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-message"></i></span>
 			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message"></textarea>
+			<span v-if="errors.message"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
 		</div>
 
-		<button type="submit" class="submit" @click.prevent="SendMessage">Отправить</button>
+		<button type="submit" class="submit" :disabled="is_sent" :class="[is_sent ? 'bg-success' : '']"
+			@click.prevent="SendMessage">{{ is_sent ? 'Отправлено' : 'Отправить' }}</button>
+
 	</div>
 </template>
 	
@@ -41,7 +47,9 @@ export default {
 				email: null,
 				subject: null,
 				message: null
-			}
+			},
+
+			is_sent: false
 		}
 	},
 
@@ -55,7 +63,19 @@ export default {
 					message: this.data.message
 				})
 				.then(response => {
-					console.log(response);
+					this.data.name = null;
+					this.data.email = null;
+					this.data.subject = null;
+					this.data.message = null;
+
+					this.errors.name = null;
+					this.errors.email = null;
+					this.errors.subject = null;
+					this.errors.message = null;
+
+					this.is_sent = true;
+
+					// console.log(response.data);
 				})
 				.catch(error => {
 					if (error.response.status === 422) {
@@ -64,6 +84,7 @@ export default {
 						this.errors.subject = error.response.data.errors.subject;
 						this.errors.message = error.response.data.errors.message;
 					}
+					// console.log(error.response.data);
 				})
 				.finally({});
 		}
@@ -72,7 +93,9 @@ export default {
 </script>
 
 <style scoped>
-.contacts-form {}
+.contacts-form {
+	text-align: center;
+}
 
 .contacts-form .input {
 	position: relative;
@@ -155,9 +178,5 @@ export default {
 .contacts-form .submit:hover {
 	box-shadow: 0 0 15px 5px rgba(5, 140, 221, .8);
 	background-color: #0077ff;
-}
-
-.error {
-	border: 2px solid #F00 !important;
 }
 </style>

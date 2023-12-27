@@ -17,6 +17,8 @@ class ContactsController extends Controller
 	{
 		$data = $request->validated();
 
+		return $data;
+
 		$mail = new PHPMailer(true);
 
 		try {
@@ -29,6 +31,9 @@ class ContactsController extends Controller
 			$mail->SMTPSecure = env('MAIL_ENCRYPTION');
 			$mail->Port = env('MAIL_PORT');
 
+			$mail->CharSet = "UTF-8";
+			$mail->Encoding = 'base64';
+
 			$mail->SetFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 			$mail->AddReplyTo(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 
@@ -39,13 +44,11 @@ class ContactsController extends Controller
 			$mail->Subject = $request->subject;
 			$mail->Body    = $request->message;
 
-			if ($mail->Send()) {
-				return ('Сообщение успешно отправлено!');
-			} else {
-				return ('Сообщение не может быть отправлено! Ошибка: ' . $mail->ErrorInfo);
-			}
+			$mail->Send();
+
+			return ('Ваше сообщение успешно отправлено!');
 		} catch (Exception $error) {
-			return ('Сообщение не может быть отправлено! Ошибка: ' . $mail->ErrorInfo);
+			return ('Ваше сообщение не может быть отправлено! Ошибка: ' . $mail->ErrorInfo);
 		}
 	}
 }
