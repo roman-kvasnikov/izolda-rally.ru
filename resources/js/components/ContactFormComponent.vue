@@ -75,7 +75,7 @@ export default {
 
 					this.is_sent = true;
 
-					console.log(response.data);
+					// console.log(response.data);
 				})
 				.catch(error => {
 					if (error.response.status === 422) {
@@ -84,7 +84,7 @@ export default {
 						this.errors.subject = error.response.data.errors.subject;
 						this.errors.message = error.response.data.errors.message;
 					}
-					console.log(error.response.data);
+					// console.log(error.response.data);
 				})
 				.finally({});
 		}

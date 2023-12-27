@@ -17,8 +17,6 @@ class ContactsController extends Controller
 	{
 		$data = $request->validated();
 
-		return $data;
-
 		$mail = new PHPMailer(true);
 
 		try {
@@ -37,12 +35,12 @@ class ContactsController extends Controller
 			$mail->SetFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 			$mail->AddReplyTo(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 
-			$mail->AddAddress($request->email, $request->name);
+			$mail->AddAddress($data->email, $data->name);
 
 			$mail->IsHTML(TRUE);
 
-			$mail->Subject = $request->subject;
-			$mail->Body    = $request->message;
+			$mail->Subject = $data->subject;
+			$mail->Body    = $data->message;
 
 			$mail->Send();
 
