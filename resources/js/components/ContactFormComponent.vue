@@ -10,7 +10,7 @@
 			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" />
 			<span v-if="errors.email"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
 		</div>
-		<div class=" input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
+		<div class="input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-envelope"></i></span>
 			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" />
 			<span v-if="errors.subject"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
@@ -23,7 +23,6 @@
 
 		<button type="submit" class="submit" :disabled="is_sent" :class="[is_sent ? 'bg-success' : '']"
 			@click.prevent="SendMessage">{{ is_sent ? 'Отправлено' : 'Отправить' }}</button>
-
 	</div>
 </template>
 	
