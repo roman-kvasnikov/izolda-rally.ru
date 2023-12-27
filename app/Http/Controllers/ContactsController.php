@@ -17,7 +17,7 @@ class ContactsController extends Controller
 	{
 		$data = $request->validated();
 
-		return $data;
+		// return $data;
 
 		$mail = new PHPMailer(true);
 

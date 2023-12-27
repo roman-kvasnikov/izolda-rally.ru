@@ -13,7 +13,7 @@
 		<div class="col-lg-6 col-md-12">
 			<div class="team-member">
 				<div class="member-photo">
-					<img src="{{ asset('img/crew/1_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('img/team/ikonnikova.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="member-name">Маргарита Иконникова</div>
@@ -30,7 +30,7 @@
 		<div class="col-lg-6 col-md-12">
 			<div class="team-member">
 				<div class="member-photo">
-					<img src="{{ asset('img/crew/2_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('img/team/balandina.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="member-name">Александра Баландина</div>
@@ -48,7 +48,7 @@
 		<div class="col-lg-6 col-md-12">
 			<div class="team-member">
 				<div class="member-photo">
-					<img src="{{ asset('img/crew/1_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('img/team/semin.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="member-name">Антон Сёмин</div>
@@ -63,7 +63,7 @@
 		<div class="col-lg-6 col-md-12">
 			<div class="team-member">
 				<div class="member-photo">
-					<img src="{{ asset('img/crew/2_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('img/team/kostrikov.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="member-name">Евгений Костриков</div>
