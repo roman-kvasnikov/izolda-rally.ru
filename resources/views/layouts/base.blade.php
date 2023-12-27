@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" prefix="og: http://ogp.me/ns#">
 
 <head>
 	<meta charset="UTF-8">
@@ -8,6 +8,17 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>@yield('title') - Izolda Rally</title>
+
+	<meta name='ils:image' content="{{ asset('img/izolda.jpg') }}" />
+
+	<meta property="og:title" content="Izolda Rally" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{ env('APP_URL') }}" />
+	<meta property="og:image" content="{{ asset('img/izolda.jpg') }}" />
+	<meta property="og:image:width" content="1200"/>
+	<meta property="og:image:height" content="630"/>
+	<meta property="og:description" content="Сайт раллийной команды Izolda Rally" />
+
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 	@vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js', 'resources/js/bootstrap.js'])
