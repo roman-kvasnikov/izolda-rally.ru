@@ -2,34 +2,34 @@
 	<div class="contacts-form">
 		<div class="input name" :class="[errors.name ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-user"></i></span>
-			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name" />
+			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name" @focus="errors.name = null" />
 			<span v-if="errors.name">
 				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.name }}</span>
+				<span class="error_message text-danger">{{ this.errors.name[0] }}</span>
 			</span>
 		</div>
 		<div class="input email" :class="[errors.email ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-at"></i></span>
-			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" />
+			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" @focus="errors.email = null" />
 			<span v-if="errors.email">
 				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.email }}</span>
+				<span class="error_message text-danger">{{ this.errors.email[0] }}</span>
 			</span>
 		</div>
 		<div class="input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-envelope"></i></span>
-			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" />
+			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" @focus="errors.subject = null" />
 			<span v-if="errors.subject">
 				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.subject }}</span>
+				<span class="error_message text-danger">{{ this.errors.subject[0] }}</span>
 			</span>
 		</div>
 		<div class="input message" :class="[errors.message ? 'border border-danger border-2' : '']">
 			<span><i class="fas fa-message"></i></span>
-			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message"></textarea>
+			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message" @focus="errors.message = null"></textarea>
 			<span v-if="errors.message">
 				<span class="error_icon message"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.message }}</span>
+				<span class="error_message text-danger">{{ this.errors.message[0] }}</span>
 			</span>
 		</div>
 
@@ -90,10 +90,10 @@ export default {
 				})
 				.catch(error => {
 					if (error.response.status === 422) {
-						this.errors.name = error.response.data.errors.name[0];
-						this.errors.email = error.response.data.errors.email[0];
-						this.errors.subject = error.response.data.errors.subject[0];
-						this.errors.message = error.response.data.errors.message[0];
+						this.errors.name = error.response.data.errors.name;
+						this.errors.email = error.response.data.errors.email;
+						this.errors.subject = error.response.data.errors.subject;
+						this.errors.message = error.response.data.errors.message;
 					}
 					console.log(error.response.data);
 				})
