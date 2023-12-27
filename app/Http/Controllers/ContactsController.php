@@ -32,10 +32,10 @@ class ContactsController extends Controller
 			$mail->CharSet = "UTF-8";
 			$mail->Encoding = 'base64';
 
-			$mail->SetFrom(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
-			$mail->AddReplyTo(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+			$mail->SetFrom($request->email, $request->name);
+			$mail->AddReplyTo($request->email, $request->name);
 
-			$mail->AddAddress($request->email, $request->name);
+			$mail->AddAddress(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
 
 			$mail->IsHTML(TRUE);
 

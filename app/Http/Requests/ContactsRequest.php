@@ -22,28 +22,28 @@ class ContactsRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name'		=> 'required|string|min:5|max:100',
+			'name'		=> 'required|string|min:3|max:100',
 			'email'		=> 'required|string|email:rfc,dns',
-			'subject'	=> 'required|string|min:10|max:200',
-			'message'	=> 'required|string|min:20|max:10000'
+			'subject'	=> 'required|string|min:5|max:200',
+			'message'	=> 'required|string|min:10|max:10000'
 		];
 	}
 
 	public function messages()
 	{
 		return [
-			'name.required' => 'Введите пожалуйста свое полное Имя!',
+			'name.required' => 'Введите пожалуйста ваше Имя!',
 			'email.required' => 'Введите пожалуйста ваш E-Mail!',
-			'subject.required' => 'Введите пожалуйста ваше сообщение!',
+			'subject.required' => 'Введите пожалуйста тему сообщения!',
 			'message.required' => 'Введите пожалуйста ваше сообщение!',
 
-			'name.min' => 'Ваше полное Имя должно содержать больше 5 символов!',
-			'name.max' => 'Ваше полное Имя должно содержать не больше 100 символов!',
+			'name.min' => 'Ваше Имя должно содержать больше 3 символов!',
+			'name.max' => 'Ваше Имя не должно содержать больше 100 символов!',
 			'email.email' => 'Не верный формат E-Mail!',
-			'subject.min' => 'Тема сообщения должна содержать больше 10 символов!',
-			'subject.max' => 'Тема сообщения должна содержать не больше 200 символов!',
-			'message.min' => 'Ваше сообщение должно содержать больше 20 символов!',
-			'message.max' => 'Ваше сообщение должно содержать не больше 10000 символов!'
+			'subject.min' => 'Тема сообщения должна содержать больше 5 символов!',
+			'subject.max' => 'Тема сообщения не должна содержать больше 200 символов!',
+			'message.min' => 'Ваше сообщение должно содержать больше 10 символов!',
+			'message.max' => 'Ваше сообщение не должно содержать больше 10000 символов!'
 		];
 	}
 }
