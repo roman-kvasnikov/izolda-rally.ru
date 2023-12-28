@@ -24,7 +24,6 @@
 	@vite(['resources/sass/app.scss', 'resources/css/app.css', 'resources/js/app.js', 'resources/js/bootstrap.js'])
 
 	<link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/layout.css') }}" rel="stylesheet">
 </head>
 
 <body>
