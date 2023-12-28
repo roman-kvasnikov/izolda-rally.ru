@@ -42,20 +42,20 @@ class ContactsController extends Controller
 			$suject = $request->subject;
 			$message = $request->message;
 
-			$suject = trim ( $suject );
-			$suject = str_replace( array( '\\', "\0", "\n", "\r", "'", '"', "\x1a" ), array( '\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z' ), $suject );
-			$suject = stripslashes ( $suject );
-			$suject = str_replace( '\'', "'", $suject );
-			$suject = str_replace( '\"', '"', $suject );
+			$suject = trim($suject);
+			$suject = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $suject);
+			$suject = stripslashes($suject);
+			$suject = str_replace('\'', "'", $suject);
+			$suject = str_replace('\"', '"', $suject);
 
-			$message = trim( $message );
-			$message = str_replace( "\r", '', $message );
-			$message = preg_replace( "/\n\n+/", '<br><br>', $message );
-			$message = preg_replace( "/\n/", '<br>', $message );
-			$message = str_replace( array( '\\', "\0", "\n", "\r", "'", '"', "\x1a" ), array( '\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z' ), $message );
-			$message = stripslashes ( $message );
-			$message = str_replace( '\'', "'", $message );
-			$message = str_replace( '\"', '"', $message );
+			$message = trim($message);
+			$message = str_replace("\r", '', $message);
+			$message = preg_replace("/\n\n+/", '<br><br>', $message);
+			$message = preg_replace("/\n/", '<br>', $message);
+			$message = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $message);
+			$message = stripslashes($message);
+			$message = str_replace('\'', "'", $message);
+			$message = str_replace('\"', '"', $message);
 
 			$mail->Subject = $suject;
 			$mail->Body    = $message;

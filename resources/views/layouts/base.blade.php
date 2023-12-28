@@ -22,6 +22,19 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 	@vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/bootstrap.js'])
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTCJG69JCE"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-NTCJG69JCE');
+	</script>
 </head>
 
 <body>
