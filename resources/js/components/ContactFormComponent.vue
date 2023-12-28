@@ -1,35 +1,39 @@
 <template>
 	<div class="contacts-form">
-		<div class="input name" :class="[errors.name ? 'border border-danger border-2' : '']">
-			<span><i class="fas fa-user"></i></span>
-			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name" @focus="errors.name = null" />
-			<span v-if="errors.name">
-				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.name[0] }}</span>
+		<div class="field-input name" :class="[errors.name ? 'border border-danger border-2' : '']">
+			<span class="field-icon"><i class="fas fa-user"></i></span>
+			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name"
+				@focus="errors.name = null" />
+			<span class="field-error" v-if="errors.name">
+				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
+				<span class="field-error-message text-danger">{{ this.errors.name[0] }}</span>
 			</span>
 		</div>
-		<div class="input email" :class="[errors.email ? 'border border-danger border-2' : '']">
-			<span><i class="fas fa-at"></i></span>
-			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" @focus="errors.email = null" />
-			<span v-if="errors.email">
-				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.email[0] }}</span>
+		<div class="field-input email" :class="[errors.email ? 'border border-danger border-2' : '']">
+			<span class="field-icon"><i class="fas fa-at"></i></span>
+			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email"
+				@focus="errors.email = null" />
+			<span class="field-error" v-if="errors.email">
+				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
+				<span class="field-error-message text-danger">{{ this.errors.email[0] }}</span>
 			</span>
 		</div>
-		<div class="input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
-			<span><i class="fas fa-envelope"></i></span>
-			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" @focus="errors.subject = null" />
-			<span v-if="errors.subject">
-				<span class="error_icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.subject[0] }}</span>
+		<div class="field-input subject w-100" :class="[errors.subject ? 'border border-danger border-2' : '']">
+			<span class="field-icon"><i class="fas fa-envelope"></i></span>
+			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject"
+				@focus="errors.subject = null" />
+			<span class="field-error" v-if="errors.subject">
+				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
+				<span class="field-error-message text-danger">{{ this.errors.subject[0] }}</span>
 			</span>
 		</div>
-		<div class="input message" :class="[errors.message ? 'border border-danger border-2' : '']">
-			<span><i class="fas fa-message"></i></span>
-			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message" @focus="errors.message = null"></textarea>
-			<span v-if="errors.message">
-				<span class="error_icon message"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="error_message text-danger">{{ this.errors.message[0] }}</span>
+		<div class="field-input message" :class="[errors.message ? 'border border-danger border-2' : '']">
+			<span class="field-icon"><i class="fas fa-message"></i></span>
+			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message"
+				@focus="errors.message = null"></textarea>
+			<span class="field-error" v-if="errors.message">
+				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
+				<span class="field-error-message text-danger">{{ this.errors.message[0] }}</span>
 			</span>
 		</div>
 
@@ -103,108 +107,114 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@mixin border-r($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
 .contacts-form {
 	text-align: center;
-}
 
-.contacts-form .input {
-	position: relative;
-	display: flex;
-	background-color: #f1f1f1;
-	box-shadow: 0 2px 10px #ccc;
-	max-width: 400px;
-	height: 50px;
-	border: 2px solid #f1f1f1;
-	border-radius: 20px;
-	padding: 0 15px;
-	margin-bottom: 25px;
-}
+	.field-input {
+		position: relative;
+		display: flex;
+		border: 2px solid #f1f1f1;
+		@include border-r(15px);
+		background-color: #f1f1f1;
+		box-shadow: 0 2px 10px #ccc;
+		max-width: 400px;
+		height: 52px;
+		padding: 0 10px;
+		margin-bottom: 25px;
 
-.contacts-form .input.w-100 {
-	max-width: 100%;
-}
+		.field-icon {
+			position: relative;
+			top: 50%;
+			transform: translate(0, -50%);
 
-.contacts-form .input i {
-	font-size: 30px;
-	padding-right: 15px;
+			font-size: 32px;
 
-	position: relative;
-	top: 50%;
-	transform: translate(0, -50%);
-}
+			i {
+				padding-right: 15px;
+			}
+		}
 
-.contacts-form .input input {
-	width: 100%;
-	font-size: 18px;
-	letter-spacing: 1px;
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
+		input {
+			width: 100%;
+			font-size: 18px;
+			letter-spacing: 1px;
+			background-color: transparent;
+			border: none;
+			outline: none;
+		}
 
-.contacts-form .input textarea {
-	width: 100%;
-	height: 100%;
-	font-size: 18px;
-	letter-spacing: 1px;
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
+		textarea {
+			width: 100%;
+			height: 100%;
+			font-size: 18px;
+			letter-spacing: 1px;
+			background-color: transparent;
+			border: none;
+			outline: none;
+		}
 
-.contacts-form .input:has(> textarea) {
-	max-width: 100%;
-	height: 300px;
-	padding: 5px 15px;
-}
+		&:has(> textarea) {
+			max-width: 100%;
+			height: 300px;
+		}
 
-.contacts-form .input:has(> textarea) i {
-	position: relative;
-	top: 20px;
-}
+		&:has(> input:focus),
+		&:has(> textarea:focus) {
+			border: 2px solid #888888;
+			transition: 0.3s;
+		}
 
-.contacts-form .input:has(> input:focus),
-.contacts-form .input:has(> textarea:focus) {
-	border: 2px solid #888888;
-	transition: 0.3s;
-}
+		&.w-100 {
+			max-width: 100%;
+		}
 
-.contacts-form .submit {
-	font-size: 20px;
-	letter-spacing: 1px;
-	margin-top: 25px;
-	padding: 10px 80px;
-	border: none;
-	border-radius: 20px;
-	color: #fff;
-	box-shadow: 0 0 10px 0 rgba(5, 140, 221, .8);
-	background-color: #0071f0;
-	outline: none;
-	cursor: pointer;
-	text-transform: uppercase;
-	transition: 0.2s;
-}
+		.field-error {
+			.field-error-icon {
+				position: absolute;
+				top: -1px;
+				right: 10px;
 
-.contacts-form .submit:hover {
-	box-shadow: 0 0 15px 5px rgba(5, 140, 221, .8);
-	background-color: #0077ff;
-}
+				font-size: 32px;
+			}
 
-.error_icon {
-	position: absolute;
-	top: 23px;
-	right: 10px;
-}
-.error_icon.message {
-	top: 0;
-}
+			.field-error-message {
+				position: absolute;
+				bottom: -24px;
+				right: 10px;
 
-.error_message {
-	position: absolute;
-	bottom: -22px;
-	right: 10px;
+				font-size: 14px;
+			}
+		}
 
-	font-size: 12px;
+	}
+
+	.submit {
+		font-size: 20px;
+		letter-spacing: 1px;
+		margin-top: 25px;
+		padding: 10px 80px;
+		border: none;
+		@include border-r(15px);
+		color: #fff;
+		box-shadow: 0 0 10px 0 rgba(5, 140, 221, .8);
+		background-color: #0071f0;
+		outline: none;
+		cursor: pointer;
+		text-transform: uppercase;
+		transition: 0.2s;
+
+		&:hover {
+			box-shadow: 0 0 15px 5px rgba(5, 140, 221, .8);
+			background-color: #0077ff;
+		}
+	}
 }
 </style>
