@@ -25,10 +25,21 @@ jobs:
             php artisan down
             php composer.phar install
             php artisan migrate --force
-            php artisan config:cache
-            php artisan event:cache
-            php artisan route:cache
-            php artisan view:cache
-            php artisan config:clear
+            php artisan optimize:clear
             php artisan up
             echo "Done!"
+
+
+
+
+# php artisan config:clear
+# php artisan cache:clear
+# php artisan event:clear
+# php artisan route:clear
+# php artisan view:clear
+# php artisan config:cache
+# php artisan event:cache
+# php artisan route:cache
+# php artisan view:cache
+
+# php artisan optimize

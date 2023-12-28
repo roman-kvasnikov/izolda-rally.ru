@@ -22,12 +22,12 @@ class ContactsController extends Controller
 		try {
 			$mail->SMTPDebug = 0;
 			$mail->IsSMTP();
-			$mail->Host = env('MAIL_HOST');
+			$mail->Host = config('mail.mailers.smtp.host');
 			$mail->SMTPAuth = true;
-			$mail->Username = env('MAIL_USERNAME');
-			$mail->Password = env('MAIL_PASSWORD');
-			$mail->SMTPSecure = env('MAIL_ENCRYPTION');
-			$mail->Port = env('MAIL_PORT');
+			$mail->Username = config('mail.mailers.smtp.username');
+			$mail->Password = config('mail.mailers.smtp.password');
+			$mail->SMTPSecure = config('mail.mailers.smtp.encryption');
+			$mail->Port = config('mail.mailers.smtp.port');
 
 			$mail->CharSet = "UTF-8";
 			$mail->Encoding = 'base64';
@@ -35,7 +35,7 @@ class ContactsController extends Controller
 			$mail->SetFrom($request->email, $request->name);
 			$mail->AddReplyTo($request->email, $request->name);
 
-			$mail->AddAddress(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+			$mail->AddAddress(config('mail.from.address'), config('mail.from.name'));
 
 			$mail->IsHTML(TRUE);
 
