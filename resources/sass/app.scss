@@ -111,7 +111,12 @@ footer {
         margin-bottom: 15px;
 
         img {
+			cursor: pointer;
             box-shadow: 0px 0px 40px #000;
+
+            &:hover {
+                transform: scale(1.02);
+            }
         }
     }
 
@@ -147,7 +152,12 @@ footer {
         margin-bottom: 15px;
 
         img {
+			cursor: pointer;
             box-shadow: 0px 0px 40px #000;
+
+            &:hover {
+                transform: scale(1.02);
+            }
         }
     }
 
