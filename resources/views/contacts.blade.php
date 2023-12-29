@@ -33,8 +33,8 @@
 					<div class="info-icon"><i class="fas fa-at"></i></div>
 					<div class="info-title">E-Mail:</div>
 					<div class="info-content">
-						<a href="mailto:official@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">official@izoldarally.ru</a>
-						<a href="mailto:media@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">media@izoldarally.ru</a>
+						<a href="mailto:official@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">official@izolda-rally.ru</a>
+						<a href="mailto:media@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">media@izolda-rally.ru</a>
 					</div>
 				</div>
 			</div>
