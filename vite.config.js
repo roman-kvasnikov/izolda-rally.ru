@@ -10,21 +10,20 @@ export default defineConfig( {
 				'resources/js/app.js',
 				'resources/js/bootstrap.js'
 			],
-			refresh: true,
+			refresh: true
 		} ),
 		vue( {
 			template: {
 				transformAssetUrls: {
 					base: null,
-					includeAbsolute: false,
-				},
-			},
-		} ),
+					includeAbsolute: false
+				}
+			}
+		} )
 	],
 	resolve: {
 		alias: {
 			vue: 'vue/dist/vue.esm-bundler.js',
-		},
-	},
-	publicDir: 'public'
+		}
+	}
 } );

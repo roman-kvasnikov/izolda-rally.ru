@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col">
 			<div>
-				<img src="{{ asset('img/izolda-crew.jpg') }}" class="w-100 img-thumbnail" />
+				<img src="{{ asset('images/izolda-crew.jpg') }}" class="w-100 img-thumbnail" />
 			</div>
 		</div>
 	</div>

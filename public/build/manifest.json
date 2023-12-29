@@ -34,6 +34,10 @@
     "file": "assets/fa-v4compatibility-Gkfbzimj.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
   },
+  "resources/fonts/pressuru.otf": {
+    "file": "assets/pressuru-MMzB5cUq.otf",
+    "src": "resources/fonts/pressuru.otf"
+  },
   "resources/js/app.js": {
     "css": [
       "assets/app-yKBWBCaN.css"
@@ -54,7 +58,7 @@
     "src": "resources/js/bootstrap.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-BjvHTdGj.css",
+    "file": "assets/app-S55kMBhk.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }

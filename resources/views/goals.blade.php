@@ -25,8 +25,8 @@
 			<p><b>Надеемся, что все это поможет нам достичь успеха в ралли и привлечь новых людей в этот вид автоспорта.</b></p>
 		</div>
 		<div class="col-lg-4 col-md-12 px-3">
-			<img src="{{ asset('img/goals/image_1.jpg') }}" class="w-100 mb-5" />
-			<img src="{{ asset('img/goals/image_2.jpg') }}" class="w-100" />
+			<img src="{{ asset('images/goals/image_1.jpg') }}" class="w-100 mb-5" />
+			<img src="{{ asset('images/goals/image_2.jpg') }}" class="w-100" />
 		</div>
 	</div>
 </div>

@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col">
 			<div>
-				<img src="{{ asset('img/activity/image_2.jpg') }}" class="w-100 img-thumbnail" />
+				<img src="{{ asset('images/activity/image_2.jpg') }}" class="w-100 img-thumbnail" />
 			</div>
 		</div>
 	</div>

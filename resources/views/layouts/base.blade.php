@@ -8,12 +8,12 @@
 
 	<title>@yield('title') - Izolda Rally</title>
 
-	<meta name='ils:image' content="{{ asset('img/izolda.jpg') }}" />
+	<meta name='ils:image' content="{{ asset('images/izolda.jpg') }}" />
 
 	<meta property="og:title" content="Izolda Rally" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="{{ config('app.url') }}" />
-	<meta property="og:image" content="{{ asset('img/izolda.jpg') }}" />
+	<meta property="og:image" content="{{ asset('images/izolda.jpg') }}" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:description" content="Официальный сайт раллийной команды Izolda Rally" />
@@ -46,7 +46,7 @@
 					<nav class="navbar navbar-expand-md navbar-dark d-flex align-items-center">
 						<div style="width: 150px;">
 							<a href="{{ route('index') }}">
-								<img src="{{ asset('img/izolda_logo.png') }}" class="img-fluid w-100" />
+								<img src="{{ asset('images/izolda_logo.png') }}" class="img-fluid w-100" />
 							</a>
 						</div>
 

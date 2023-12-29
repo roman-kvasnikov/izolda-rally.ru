@@ -15,7 +15,7 @@
 				<h2>1-ый пилот</h2>
 
 				<div class="pilot-photo">
-					<img src="{{ asset('img/crew/1_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('images/crew/1_pilot.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="pilot-name">Роман Квасников</div>
@@ -37,7 +37,7 @@
 				<h2>2-ой пилот</h2>
 
 				<div class="pilot-photo">
-					<img src="{{ asset('img/crew/2_pilot.jpg') }}" class="w-100 img-thumbnail" />
+					<img src="{{ asset('images/crew/2_pilot.jpg') }}" class="w-100 img-thumbnail" />
 				</div>
 
 				<div class="pilot-name">Илья Баландин</div>
