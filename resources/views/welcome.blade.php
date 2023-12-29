@@ -81,7 +81,7 @@
 			</div>
 			<div class="row">
 				<div class="col-75">
-					<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+					<textarea id="subject" name="subject" placeholder="Write something..." style="height:200px"></textarea>
 				</div>
 			</div>
 			<div class="row">
