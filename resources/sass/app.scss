@@ -19,11 +19,19 @@
 
 $background: url("/img/background_1.jpg");
 
-@mixin border-r($radius) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    -ms-border-radius: $radius;
-    border-radius: $radius;
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
 }
 
 body,
@@ -68,7 +76,7 @@ footer {
         background-size: cover;
         background-attachment: fixed;
 
-        @include border-r(10px);
+        @include border-radius(10px);
         padding: 30px;
     }
 
@@ -115,7 +123,7 @@ footer {
             box-shadow: 0px 0px 40px #000;
 
             &:hover {
-                transform: scale(1.02);
+                @include transform(scale(1.02));
             }
         }
     }
@@ -156,7 +164,7 @@ footer {
             box-shadow: 0px 0px 40px #000;
 
             &:hover {
-                transform: scale(1.02);
+                @include transform(scale(1.02));
             }
         }
     }
@@ -186,13 +194,13 @@ footer {
     }
 
     img {
-        @include border-r(5px);
+        @include border-radius(5px);
         box-shadow: 0px 0px 30px #000;
         cursor: pointer;
         transition: 0.2s;
 
         &:hover {
-            transform: scale(1.02);
+			@include transform(scale(1.02));
         }
     }
 }
@@ -208,13 +216,13 @@ footer {
     }
 
     img {
-        @include border-r(5px);
+        @include border-radius(5px);
         box-shadow: 0px 0px 30px #000;
         cursor: pointer;
         transition: 0.2s;
 
         &:hover {
-            transform: scale(1.02);
+			@include transform(scale(1.02));
         }
     }
 }

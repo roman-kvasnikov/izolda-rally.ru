@@ -13,10 +13,10 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+const app = createApp( {} );
 
 import ContactFormComponent from './components/ContactFormComponent.vue';
-app.component('contact-form-component', ContactFormComponent);
+app.component( 'contact-form-component', ContactFormComponent );
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +36,4 @@ app.component('contact-form-component', ContactFormComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount( '#app' );
