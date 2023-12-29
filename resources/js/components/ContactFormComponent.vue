@@ -115,20 +115,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	-ms-border-radius: $radius;
-	border-radius: $radius;
-}
-
-@mixin transform($transforms) {
-	-moz-transform: $transforms;
-	-o-transform: $transforms;
-	-ms-transform: $transforms;
-	-webkit-transform: $transforms;
-	transform: $transforms;
-}
+@import '../../sass/import/_mixins';
 
 .contacts-form {
 	text-align: center;

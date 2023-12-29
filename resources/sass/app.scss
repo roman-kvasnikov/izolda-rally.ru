@@ -1,38 +1,10 @@
 @charset 'UTF-8';
 
-// Fonts
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import 'import/fonts';
+@import 'import/variables';
+@import 'import/mixins';
 
-@font-face {
-    font-family: "Pressuru";
-    src: url("/fonts/pressuru.otf") format("opentype");
-}
-
-// Font-Awesome
-@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-
-// Variables
-@import 'variables';
-
-// Bootstrap
 @import 'bootstrap/scss/bootstrap';
-
-$background: url("/img/background_1.jpg");
-
-@mixin border-radius($radius) {
-    -webkit-border-radius: $radius;
-    -moz-border-radius: $radius;
-    -ms-border-radius: $radius;
-    border-radius: $radius;
-}
-
-@mixin transform($transforms) {
-    -moz-transform: $transforms;
-    -o-transform: $transforms;
-    -ms-transform: $transforms;
-    -webkit-transform: $transforms;
-    transform: $transforms;
-}
 
 body,
 header,
@@ -230,17 +202,17 @@ footer {
 
 /* Contacts Info */
 .contacts-info {
-    padding: 10px;
+    margin: 0 30px;
 
     &>div {
         position: relative;
-        padding: 20px;
+        margin-bottom: 40px;
     }
 
     .info-icon {
         position: absolute;
-        left: -25px;
-        top: 21px;
+        left: -20px;
+        top: 1px;
         font-size: 30px;
         font-weight: bold;
     }
@@ -248,7 +220,7 @@ footer {
     .info-title {
         font-size: 30px;
         font-weight: bold;
-        padding-bottom: 10px;
+        padding: 0 0 10px 25px;
     }
 
     .info-content {
@@ -279,8 +251,8 @@ footer {
 
         a.btn-mail {
             width: 230px;
-			text-decoration: none;
-			font-size: 20px;
+            text-decoration: none;
+            font-size: 20px;
         }
     }
 }

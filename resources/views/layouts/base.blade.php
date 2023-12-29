@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" prefix="og: http://ogp.me/ns#">
+<html lang="{{ config('app.locale') }}" prefix="og: http://ogp.me/ns#">
 
 <head>
 	<meta charset="UTF-8">
-	<!-- <meta name="viewport" content="width=730, initial-scale=1.0"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -13,11 +12,11 @@
 
 	<meta property="og:title" content="Izolda Rally" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="{{ env('APP_URL') }}" />
+	<meta property="og:url" content="{{ config('app.url') }}" />
 	<meta property="og:image" content="{{ asset('img/izolda.jpg') }}" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	<meta property="og:description" content="Сайт раллийной команды Izolda Rally" />
+	<meta property="og:description" content="Официальный сайт раллийной команды Izolda Rally" />
 
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
@@ -31,6 +30,7 @@
 		function gtag() {
 			dataLayer.push(arguments);
 		}
+
 		gtag('js', new Date());
 
 		gtag('config', 'G-NTCJG69JCE');
