@@ -25,16 +25,16 @@
 					<div class="info-icon"><i class="fab fa-telegram"></i></div>
 					<div class="info-title">Telegram:</div>
 					<div class="info-content">
-						<a href="https://t.me/romankw" class="btn btn-primary mx-3"><i class="fab fa-telegram"></i> Роман</a>
-						<a href="https://t.me/balandini_motors" class="btn btn-primary mx-3"><i class="fab fa-telegram"></i> Илья</a>
+						<a href="https://t.me/romankw" class="btn btn-primary btn-telegram mx-3 my-2"><i class="fab fa-telegram"></i> Роман</a>
+						<a href="https://t.me/balandini_motors" class="btn btn-primary btn-telegram mx-3 my-2"><i class="fab fa-telegram"></i> Илья</a>
 					</div>
 				</div>
 				<div class="contacts-email">
 					<div class="info-icon"><i class="fas fa-at"></i></div>
 					<div class="info-title">E-Mail:</div>
 					<div class="info-content">
-						<a href="mailto:official@izolda-rally.ru" class="mx-3">official@izolda-rally.ru</a>
-						<a href="mailto:media@izolda-rally.ru" class="mx-3">media@izolda-rally.ru</a>
+						<a href="mailto:official@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">official@izoldarally.ru</a>
+						<a href="mailto:media@izolda-rally.ru" class="btn btn-link btn-mail mx-3 my-2">media@izoldarally.ru</a>
 					</div>
 				</div>
 			</div>

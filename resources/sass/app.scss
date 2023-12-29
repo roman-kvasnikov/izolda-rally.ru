@@ -230,16 +230,17 @@ footer {
 
 /* Contacts Info */
 .contacts-info {
+    padding: 10px;
+
     &>div {
         position: relative;
-        padding: 0 0 20px 50px;
-        padding-bottom: 50px;
+        padding: 20px;
     }
 
     .info-icon {
         position: absolute;
-        left: 0;
-        top: 2px;
+        left: -25px;
+        top: 21px;
         font-size: 30px;
         font-weight: bold;
     }
@@ -252,13 +253,15 @@ footer {
 
     .info-content {
         font-size: 20px;
+        text-align: center;
 
-        a.btn {
+        a.btn-telegram {
             position: relative;
-            width: 200px;
+            width: 180px;
             font-size: 20px;
-            padding-left: 60px;
+            padding-left: 50px;
             padding-right: 30px;
+            text-decoration: none;
 
             i {
                 font-size: 30px;
@@ -273,11 +276,11 @@ footer {
                 background-color: #0077ff;
             }
         }
+
+        a.btn-mail {
+            width: 220px;
+			text-decoration: none;
+			font-size: 20px;
+        }
     }
-
-
-
-    // .contacts-address {
-    // 	padding-bottom: 20px;
-    // }
 }
