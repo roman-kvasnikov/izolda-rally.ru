@@ -20,18 +20,18 @@
 $background: url("/img/background_1.jpg");
 
 @mixin border-radius($radius) {
-	-webkit-border-radius: $radius;
-	-moz-border-radius: $radius;
-	-ms-border-radius: $radius;
-	border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
 }
 
 @mixin transform($transforms) {
-	-moz-transform: $transforms;
-	-o-transform: $transforms;
-	-ms-transform: $transforms;
-	-webkit-transform: $transforms;
-	transform: $transforms;
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
 }
 
 body,
@@ -200,7 +200,7 @@ footer {
         transition: 0.2s;
 
         &:hover {
-			@include transform(scale(1.02));
+            @include transform(scale(1.02));
         }
     }
 }
@@ -222,7 +222,62 @@ footer {
         transition: 0.2s;
 
         &:hover {
-			@include transform(scale(1.02));
+            @include transform(scale(1.02));
         }
     }
+}
+
+
+/* Contacts Info */
+.contacts-info {
+    &>div {
+        position: relative;
+        padding: 0 0 20px 50px;
+        padding-bottom: 50px;
+    }
+
+    .info-icon {
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .info-title {
+        font-size: 30px;
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+
+    .info-content {
+        font-size: 20px;
+
+        a.btn {
+            position: relative;
+            width: 200px;
+            font-size: 20px;
+            padding-left: 60px;
+            padding-right: 30px;
+
+            i {
+                font-size: 30px;
+                position: absolute;
+                top: 50%;
+                left: 30px;
+                @include transform(translate(0, -50%));
+            }
+
+            &:hover {
+                box-shadow: 0 0 5px 5px rgba(5, 140, 221, .8);
+                background-color: #0077ff;
+            }
+        }
+    }
+
+
+
+    // .contacts-address {
+    // 	padding-bottom: 20px;
+    // }
 }
