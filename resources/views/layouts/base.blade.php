@@ -90,16 +90,16 @@
 				<div class="col-8">
 					<ul class="nav d-flex justify-content-end">
 						<li class="ms-3">
-							<a href="https://vk.com/izolda_rally" class="fa-brands fa-vk" target="_blank"></a>
+							<a href="https://vk.com/izolda_rally" class="fab fa-vk" target="_blank"></a>
 						</li>
 						<li class="ms-3">
-							<a href="https://t.me/izolda_rally" class="fa-brands fa-telegram" target="_blank"></a>
+							<a href="https://t.me/izolda_rally" class="fab fa-telegram" target="_blank"></a>
 						</li>
 						<li class="ms-3">
-							<a href="https://www.youtube.com/@IzoldaRally" class="fa-brands fa-youtube" target="_blank"></a>
+							<a href="https://www.youtube.com/@IzoldaRally" class="fab fa-youtube" target="_blank"></a>
 						</li>
 						<li class="ms-3">
-							<a href="https://instagram.com/izolda_rally" class="fa-brands fa-instagram" target="_blank"></a>
+							<a href="https://instagram.com/izolda_rally" class="fab fa-instagram" target="_blank"></a>
 						</li>
 					</ul>
 				</div>

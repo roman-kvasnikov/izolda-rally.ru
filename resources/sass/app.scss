@@ -206,30 +206,35 @@ footer {
 
     &>div {
         position: relative;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
     }
 
     .info-icon {
         position: absolute;
-        left: -20px;
+        left: -25px;
         top: 1px;
-        font-size: 30px;
+        font-size: 24px;
         font-weight: bold;
     }
 
     .info-title {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: bold;
-        padding: 0 0 10px 25px;
+        padding: 0 0 5px 10px;
     }
 
     .info-content {
         font-size: 20px;
-        text-align: center;
+
+        a {
+            text-decoration: none;
+            font-size: 20px;
+			padding-left: 10px;
+        }
 
         a.btn-telegram {
             position: relative;
-            width: 180px;
+            min-width: 180px;
             font-size: 20px;
             padding-left: 50px;
             padding-right: 30px;
@@ -247,12 +252,6 @@ footer {
                 box-shadow: 0 0 5px 5px rgba(5, 140, 221, .8);
                 background-color: #0077ff;
             }
-        }
-
-        a.btn-mail {
-            width: 230px;
-            text-decoration: none;
-            font-size: 20px;
         }
     }
 }
