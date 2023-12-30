@@ -53,13 +53,13 @@
 						<a href="https://youtube.com/@IzoldaRally" target="_blank">https://youtube.com/@IzoldaRally</a>
 					</div>
 				</div>
-				<div class="contacts-instagram">
+				<!-- <div class="contacts-instagram">
 					<div class="info-icon"><i class="fab fa-instagram"></i></div>
 					<div class="info-title">Instagram:</div>
 					<div class="info-content">
 						<a href="https://instagram.com/izolda_rally" target="_blank">https://instagram.com/izolda_rally</a>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 		</div>

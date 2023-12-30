@@ -39,12 +39,12 @@
 
 <body>
 
-	<header class="fixed-top text-white border-bottom py-2">
+	<header class="fixed-top text-white border-bottom py-0">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<nav class="navbar navbar-expand-md navbar-dark d-flex align-items-center">
-						<div style="width: 150px;">
+					<nav class="navbar navbar-expand-md navbar-dark d-flex align-items-center py-0">
+						<div class="logo">
 							<a href="{{ route('index') }}">
 								<img src="{{ asset('images/izolda_logo.png') }}" class="img-fluid w-100" />
 							</a>
@@ -81,7 +81,7 @@
 		</div>
 	</main>
 
-	<footer class="fixed-bottom text-white border-top py-4">
+	<footer class="fixed-bottom text-white border-top py-2">
 		<div class="container">
 			<div class="row">
 				<div class="col-4">
@@ -98,9 +98,9 @@
 						<li class="ms-3">
 							<a href="https://www.youtube.com/@IzoldaRally" class="fab fa-youtube" target="_blank"></a>
 						</li>
-						<li class="ms-3">
+						<!-- <li class="ms-3">
 							<a href="https://instagram.com/izolda_rally" class="fab fa-instagram" target="_blank"></a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>

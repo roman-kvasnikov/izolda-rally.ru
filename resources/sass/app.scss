@@ -25,6 +25,19 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), $background;
 }
 
+header {
+    .logo {
+		position: relative;
+		width: 200px;
+        img {
+			position: relative;
+			top: 8px;
+			left: 50px;
+			@include transform(rotate(15deg) scale(1.4));
+		}
+    }
+}
+
 footer {
     a {
         text-decoration: none;
@@ -229,7 +242,7 @@ footer {
         a {
             text-decoration: none;
             font-size: 20px;
-			padding-left: 10px;
+            padding-left: 10px;
         }
 
         a.btn-telegram {
