@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/contacts', [ContactsController::class, 'store'])->name('contacts.store');
+Route::post('/contacts', [ContactsController::class, 'send'])->name('contacts.send');

@@ -39,7 +39,7 @@
 
 <body>
 
-	<header class="fixed-top text-white border-bottom py-0">
+	<header class="fixed-top text-white border-bottom">
 		<div class="container">
 			<div class="row">
 				<div class="col">

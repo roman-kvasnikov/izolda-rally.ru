@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactsRequest;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use App\Mail\ContactsMail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactsController extends Controller
 {
@@ -13,58 +13,41 @@ class ContactsController extends Controller
 		return view('contacts');
 	}
 
-	public function store(ContactsRequest $request)
+	public function send(ContactsRequest $request)
 	{
 		$request->validated();
 
-		$mail = new PHPMailer(true);
+		$subject = $request->subject;
+		$message = $request->message;
 
-		try {
-			$mail->SMTPDebug = 0;
-			$mail->IsSMTP();
-			$mail->Host = config('mail.mailers.smtp.host');
-			$mail->SMTPAuth = true;
-			$mail->Username = config('mail.mailers.smtp.username');
-			$mail->Password = config('mail.mailers.smtp.password');
-			$mail->SMTPSecure = config('mail.mailers.smtp.encryption');
-			$mail->Port = config('mail.mailers.smtp.port');
+		$subject = trim($subject);
+		$subject = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $subject);
+		$subject = stripslashes($subject);
+		$subject = str_replace('\'', "'", $subject);
+		$subject = str_replace('\"', '"', $subject);
 
-			$mail->CharSet = "UTF-8";
-			$mail->Encoding = 'base64';
+		$message = trim($message);
+		$message = str_replace("\r", '', $message);
+		$message = preg_replace("/\n\n+/", '<br><br>', $message);
+		$message = preg_replace("/\n/", '<br>', $message);
+		$message = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $message);
+		$message = stripslashes($message);
+		$message = str_replace('\'', "'", $message);
+		$message = str_replace('\"', '"', $message);
 
-			$mail->SetFrom($request->email, $request->name);
-			$mail->AddReplyTo($request->email, $request->name);
+		$mail = new ContactsMail([
+			'subject' => $request->subject,
+			'from' => [
+				'email' => $request->email,
+				'name' => $request->name
+			],
+			'replyTo' => [
+				'email' => $request->email,
+				'name' => $request->name
+			],
+			'message' => $message
+		]);
 
-			$mail->AddAddress(config('mail.from.address'), config('mail.from.name'));
-
-			$mail->IsHTML(TRUE);
-
-			$suject = $request->subject;
-			$message = $request->message;
-
-			$suject = trim($suject);
-			$suject = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $suject);
-			$suject = stripslashes($suject);
-			$suject = str_replace('\'', "'", $suject);
-			$suject = str_replace('\"', '"', $suject);
-
-			$message = trim($message);
-			$message = str_replace("\r", '', $message);
-			$message = preg_replace("/\n\n+/", '<br><br>', $message);
-			$message = preg_replace("/\n/", '<br>', $message);
-			$message = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $message);
-			$message = stripslashes($message);
-			$message = str_replace('\'', "'", $message);
-			$message = str_replace('\"', '"', $message);
-
-			$mail->Subject = $suject;
-			$mail->Body    = $message;
-
-			$mail->Send();
-
-			return ('Ваше сообщение успешно отправлено!');
-		} catch (Exception $error) {
-			return ('Ваше сообщение не может быть отправлено! Ошибка: ' . $mail->ErrorInfo);
-		}
+		Mail::to(config('mail.from.address'), config('mail.from.name'))->send($mail);
 	}
 }
