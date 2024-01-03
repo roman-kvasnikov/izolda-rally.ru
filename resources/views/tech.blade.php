@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'Техника')
+@section('title', 'Техника'.' - '.config('app.name'))
 
 @section('content')
 

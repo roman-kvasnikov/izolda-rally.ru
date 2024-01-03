@@ -20,13 +20,11 @@ class ContactsController extends Controller
 		$subject = $request->subject;
 		$message = $request->message;
 
-		$subject = trim($subject);
 		$subject = str_replace(array('\\', "\0", "\n", "\r", "'", '"', "\x1a"), array('\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $subject);
 		$subject = stripslashes($subject);
 		$subject = str_replace('\'', "'", $subject);
 		$subject = str_replace('\"', '"', $subject);
 
-		$message = trim($message);
 		$message = str_replace("\r", '', $message);
 		$message = preg_replace("/\n\n+/", '<br><br>', $message);
 		$message = preg_replace("/\n/", '<br>', $message);

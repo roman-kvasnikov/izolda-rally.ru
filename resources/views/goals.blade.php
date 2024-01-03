@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'Цели и задачи')
+@section('title', 'Цели и задачи'.' - '.config('app.name'))
 
 @section('content')
 
