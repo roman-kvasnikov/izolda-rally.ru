@@ -171,7 +171,7 @@ export default {
 		&:has(> input:focus),
 		&:has(> textarea:focus) {
 			border: 2px solid #888888;
-			transition: 0.3s;
+			@include transition(all 0.3s);
 		}
 
 		&.w-100 {
@@ -212,7 +212,7 @@ export default {
 		outline: none;
 		cursor: pointer;
 		text-transform: uppercase;
-		transition: 0.2s;
+		@include transition(all 0.3s);
 
 		&:hover {
 			box-shadow: 0 0 15px 5px rgba(5, 140, 221, .8);

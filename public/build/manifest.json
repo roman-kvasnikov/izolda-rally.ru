@@ -40,9 +40,9 @@
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-yKBWBCaN.css"
+      "assets/app-p0xBjPtu.css"
     ],
-    "file": "assets/app-2zD4CW8b.js",
+    "file": "assets/app-ZecO4CZ5.js",
     "imports": [
       "_axios-XZeItPRN.js"
     ],
@@ -58,7 +58,7 @@
     "src": "resources/js/bootstrap.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-j2dQgOOB.css",
+    "file": "assets/app-E9GkQhYG.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }

@@ -39,19 +39,23 @@
 
 <body>
 
-	@include('layouts.includes.header')
+	<div class="d-flex flex-column justify-content-between min-vh-100">
 
-	<main class="main">
-		<div class="container">
+		@include('layouts.includes.header')
 
-			<div id="app" class="wrapper">
-				@yield('content')
+		<main class="main flex-grow-1">
+			<div class="container">
+
+				<div id="app" class="wrapper">
+					@yield('content')
+				</div>
+
 			</div>
+		</main>
 
-		</div>
-	</main>
+		@include('layouts.includes.footer')
 
-	@include('layouts.includes.footer')
+	</div>
 
 </body>
 

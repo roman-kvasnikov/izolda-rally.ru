@@ -12,3 +12,9 @@
     -webkit-transform: $transforms;
     transform: $transforms;
 }
+
+@mixin transition($transitions) {
+    -webkit-transition: $transitions;
+    -o-transition: $transitions;
+    transition: $transitions;
+}

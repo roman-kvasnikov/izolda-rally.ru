@@ -15,13 +15,13 @@
 
 					<div class="navbar-collapse collapse justify-content-end" id="collapsibleNavbar">
 						<ul class="navbar-nav nav-pills">
-							<li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('index') ? 'active' : '' }}">{{ __('Главная') }}</a></li>
-							<li class="nav-item"><a href="{{ route('crew') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('crew') ? 'active' : '' }}">{{ __('Экипаж') }}</a></li>
-							<li class="nav-item"><a href="{{ route('team') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('team') ? 'active' : '' }}">{{ __('Команда') }}</a></li>
-							<li class="nav-item"><a href="{{ route('activity') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('activity') ? 'active' : '' }}">{{ __('Деятельность') }}</a></li>
-							<li class="nav-item"><a href="{{ route('tech') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('tech') ? 'active' : '' }}">{{ __('Техника') }}</a></li>
-							<li class="nav-item"><a href="{{ route('goals') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('goals') ? 'active' : '' }}">{{ __('Цели') }}</a></li>
-							<li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link px-2 mx-1 {{ Request::url() == route('contacts') ? 'active' : '' }}">{{ __('Контакты') }}</a></li>
+							<li class="nav-item"><a href="{{ route('index') }}" class="nav-link px-2 mx-1 {{ Route::is('index') ? 'active' : '' }}">{{ __('Главная') }}</a></li>
+							<li class="nav-item"><a href="{{ route('crew') }}" class="nav-link px-2 mx-1 {{ Route::is('crew') ? 'active' : '' }}">{{ __('Экипаж') }}</a></li>
+							<li class="nav-item"><a href="{{ route('team') }}" class="nav-link px-2 mx-1 {{ Route::is('team') ? 'active' : '' }}">{{ __('Команда') }}</a></li>
+							<li class="nav-item"><a href="{{ route('activity') }}" class="nav-link px-2 mx-1 {{ Route::is('activity') ? 'active' : '' }}">{{ __('Деятельность') }}</a></li>
+							<li class="nav-item"><a href="{{ route('tech') }}" class="nav-link px-2 mx-1 {{ Route::is('tech') ? 'active' : '' }}">{{ __('Техника') }}</a></li>
+							<li class="nav-item"><a href="{{ route('goals') }}" class="nav-link px-2 mx-1 {{ Route::is('goals') ? 'active' : '' }}">{{ __('Цели') }}</a></li>
+							<li class="nav-item"><a href="{{ route('contacts') }}" class="nav-link px-2 mx-1 {{ Route::is('contacts') ? 'active' : '' }}">{{ __('Контакты') }}</a></li>
 						</ul>
 					</div>
 				</nav>

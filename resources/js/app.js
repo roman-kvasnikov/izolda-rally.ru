@@ -37,3 +37,72 @@ app.component( 'contact-form-component', ContactFormComponent );
  */
 
 app.mount( '#app' );
+
+/**
+ * The next is custom JavaScript from developer
+ */
+
+// Make header decrease after the scrolling //
+
+
+// let minSize = 50,
+// 	el = document.querySelector( 'header .logo' ),
+// 	height = {
+// 		el: el.offsetHeight - minSize,
+// 		page: 20
+// }
+
+// window.addEventListener( 'scroll', () =>
+// {
+// 	let st = scrollY;
+// 	let cur;
+
+// if ( st > 25 )
+// {
+// 	cur = cur - st + 25;
+// 	el.style.width = cur + 'px';
+
+// 	// el.style.width = height.el - value + minSize + 'px'
+
+// 	console.log( el.style.width );
+// }
+
+
+// 	if ( st >= height.page ) return
+// 	let percent = height.page / st,
+// 		value = height.el / percent
+
+
+
+// 	el.style.width = height.el - value + minSize + 'px'
+
+// 	console.log( height.el, value, minSize );
+
+// } );
+
+
+
+
+
+
+
+
+
+
+
+window.addEventListener( 'scroll', function ()
+{
+	let header = document.querySelector( 'header' );
+
+	if ( header !== null )
+	{
+		if ( scrollY > 25 )
+		{
+			header.classList.add( '_scroll' );
+		}
+		else
+		{
+			header.classList.remove( '_scroll' );
+		}
+	}
+} );
