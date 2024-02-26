@@ -7,10 +7,10 @@ use Illuminate\Support\Collection;
 
 class GetMerchToViewAction
 {
-	public function run(): Collection
-	{
-		return Merch::all()
-			->map
-			->toView();
-	}
+    public function run(): Collection
+    {
+        return Merch::all()
+            ->map
+            ->toView();
+    }
 }
