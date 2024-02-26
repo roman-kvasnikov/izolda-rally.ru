@@ -18,10 +18,11 @@
 	<meta property="og:image:height" content="630" />
 	<meta property="og:description" content="Официальный сайт раллийной команды Izolda Rally" />
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
 	@vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/bootstrap.js'])
 
+	@production
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTCJG69JCE"></script>
 	<script>
@@ -35,6 +36,7 @@
 
 		gtag('config', 'G-NTCJG69JCE');
 	</script>
+	@endproduction
 </head>
 
 <body>

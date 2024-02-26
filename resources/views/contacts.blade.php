@@ -11,7 +11,7 @@
 <div class="contacts">
 	<div class="row gy-5 gx-5">
 		<div class="col-lg-7 col-md-12">
-			<contact-form-component></contact-form-component>
+			<contact-form-component />
 		</div>
 		<div class="col-lg-5 col-md-12">
 

@@ -14,6 +14,16 @@ return [
     |
     */
 
+    'tinkoff' => [
+        'terminal' => env('TINKOFF_TERMINAL'),
+        'password' => env('TINKOFF_PASSWORD'),
+    ],
+
+    'stripe' => [
+        'public_key' => env('STRIPE_PUBLIC_KEY'),
+        'secret_key' => env('STRIPE_SECRET_KEY'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

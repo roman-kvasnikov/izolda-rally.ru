@@ -1,42 +1,140 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
 import './bootstrap';
 import { createApp } from 'vue';
-
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
+import vueNumberFormat from 'vue-number-format';
 
 const app = createApp( {} );
 
+app.use( vueNumberFormat, {
+	prefix: '',
+	suffix: ' руб.',
+	decimal: ',',
+	thousand: ' ',
+	precision: 2,
+	acceptNegative: true,
+	isInteger: false
+} );
+
 import ContactFormComponent from './components/ContactFormComponent.vue';
-app.component( 'contact-form-component', ContactFormComponent );
+app.component( 'ContactFormComponent', ContactFormComponent );
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import MerchComponent from './components/MerchComponent.vue';
+app.component( 'MerchComponent', MerchComponent );
 
-// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
-//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
-// });
+import CartComponent from './components/CartComponent.vue';
+app.component( 'CartComponent', CartComponent );
 
-/**
- * Finally, we will attach the application instance to a HTML element with
- * an "id" attribute of "app". This element is included with the "auth"
- * scaffolding. Otherwise, you will need to add an element yourself.
- */
+import ProductsComponent from './components/Products/ProductsComponent.vue';
+app.component( 'ProductsComponent', ProductsComponent );
 
 app.mount( '#app' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { createApp } from 'vue';
+// import { createRouter, createWebHistory } from 'vue-router';
+// import App from './App.vue';
+
+// const router = createRouter( {
+// 	routes: [ {
+// 		path: '/', component: () => import( './views/Home.vue' )
+// 	} ],
+// 	history: createWebHistory()
+// } )
+
+// const app = createApp( App );
+// app.use( router );
+// app.mount( '#app' );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import './bootstrap';
+// import { createApp } from 'vue';
+
+// const app = createApp( {} );
+
+// import Home from "./components/Home.vue";
+// app.component( 'Home', Home );
+
+// import router from "./router";
+// app.use( router );
+
+// app.mount( '#app' );
+
+
+
+
+
+
+// import Home from "./components/Home.vue";
+// import vueNumberFormat from 'vue-number-format';
+
+// const app = createApp( {
+// 	el: '#app',
+// 	components: {
+// 		Home
+// 	},
+// 	router
+// } );
+
+// app.use( vueNumberFormat, {
+// 	prefix: '',
+// 	suffix: ' руб.',
+// 	decimal: ',',
+// 	thousand: ' ',
+// 	precision: 2,
+// 	acceptNegative: true,
+// 	isInteger: false
+// } );
+
+
+
+
+// import ContactFormComponent from './components/ContactFormComponent.vue';
+// app.component( 'ContactFormComponent', ContactFormComponent );
+
+// import ProductsComponent from './components/Products/ProductsComponent.vue';
+// app.component( 'ProductsComponent', ProductsComponent );
+
+// app.mount( '#app' );
 
 /**
  * The next is custom JavaScript from developer
@@ -90,19 +188,19 @@ app.mount( '#app' );
 
 
 
-window.addEventListener( 'scroll', function ()
-{
-	let header = document.querySelector( 'header' );
+// window.addEventListener( 'scroll', function ()
+// {
+// 	let header = document.querySelector( 'header' );
 
-	if ( header !== null )
-	{
-		if ( scrollY > 25 )
-		{
-			header.classList.add( '_scroll' );
-		}
-		else
-		{
-			header.classList.remove( '_scroll' );
-		}
-	}
-} );
+// 	if ( header !== null )
+// 	{
+// 		if ( scrollY > 25 )
+// 		{
+// 			header.classList.add( '_scroll' );
+// 		}
+// 		else
+// 		{
+// 			header.classList.remove( '_scroll' );
+// 		}
+// 	}
+// } );
