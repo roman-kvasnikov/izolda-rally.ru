@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
 		// ]);
 
 
-		\App\Services\Merches\Models\Merch::factory(1)->create();
+		\App\Services\Merches\Models\Merch::factory(16)->create();
 	}
 }
