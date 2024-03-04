@@ -1,0 +1,50 @@
+.merches,
+.cart {
+    position: relative;
+
+    a.shopping-cart {
+        position: absolute;
+        top: -55px;
+        right: 30px;
+
+        font-size: 14px;
+
+        i {
+            font-size: 24px;
+        }
+
+        .is_added_to_cart {
+            position: absolute;
+            top: -10px;
+            right: -5px;
+
+            padding: 0 5px;
+
+            font-size: 10px;
+        }
+    }
+
+    .add-to-cart {
+        input {
+            width: 35px;
+        }
+
+        a {
+            font-size: 30px;
+        }
+
+        .is_loading {
+            font-size: 30px;
+            width: 35px;
+        }
+    }
+
+    .ui-w-150 {
+        width: 150px !important;
+        height: auto;
+    }
+
+    .remove_item_link {
+        font-size: 25px;
+    }
+}

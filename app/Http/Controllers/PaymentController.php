@@ -2,124 +2,130 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdatePaymentRequest;
 use App\Services\Payments\Models\Payment;
 use App\Services\Payments\PaymentService;
+use App\Http\Requests\UpdatePaymentRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PaymentController extends Controller
 {
-    public function checkout(Payment $payment, PaymentService $paymentService)
-    {
-        abort_unless($payment->status->isPending(), 404);
+	public function checkout(Payment $payment, PaymentService $paymentService)
+	{
+		abort_unless($payment->status->isPending(), 404);
 
-        $methods = $paymentService
-            ->getPaymentMethods()
-            // ->currency($payment->currency_id)
-            ->active()
-            ->get();
+		$payment = $paymentService
+			->getPaymentToView($payment)
+			->run();
 
-        return view('merch.payment.checkout', compact('payment', 'methods'));
-    }
+		$methods = $paymentService
+			->getPaymentMethods()
+			// ->currency($payment->currency_id)
+			->active()
+			->get();
 
-    public function method(
-        UpdatePaymentRequest $request,
-        PaymentService $paymentService,
-        Payment $payment,
-    ) {
-        abort_unless($payment->status->isPending(), 404);
+		return view('merches.payments.checkout', compact('payment', 'methods'));
+	}
 
-        $method = $paymentService
-            ->getPaymentMethods()
-            ->id($request->method_id)
-            ->active()
-            ->first();
+	public function method(
+		UpdatePaymentRequest $request,
+		PaymentService $paymentService,
+		Payment $payment,
+	) {
+		abort_unless($payment->status->isPending(), 404);
 
-        abort_unless($method, 404);
+		$method = $paymentService
+			->getPaymentMethods()
+			->id($request->method_id)
+			->active()
+			->first();
 
-        $paymentService
-            ->updatePayment()
-            ->method($method)
-            ->run($payment);
+		abort_unless($method, 404);
 
-        return redirect()->route('merch.payment.process', $payment->uuid);
-    }
+		$paymentService
+			->updatePayment()
+			->method($method)
+			->run($payment);
 
-    public function process(Payment $payment, PaymentService $paymentService)
-    {
-        abort_unless($payment->status->isPending(), 404);
-        abort_unless($payment->method_id, 404);
+		return $payment->uuid; // Так как работаем с VUE, то возвращаем во VUE uuid, чтобы перенаправлять на роут уже из вью.
+		// return redirect()->route('merch.payment.process', $payment->uuid);
+	}
 
-        $driver = $paymentService->getDriver($payment->driver);
+	public function process(Payment $payment, PaymentService $paymentService)
+	{
+		abort_unless($payment->status->isPending(), 404);
+		abort_unless($payment->method_id, 404);
 
-        return $driver->view($payment);
+		$driver = $paymentService->getDriver($payment->driver);
 
-        // return view("payments.drivers.{$payment->driver->value}", compact('payment'));
-        // return view("payments::{$payment->driver->value}", compact('payment'));
-    }
+		return $driver->view($payment);
 
-    public function complete(Payment $payment, PaymentService $paymentService)
-    {
-        abort_unless($payment->status->isPending(), 404);
-        abort_unless($payment->driver->isTest(), 404);
-        abort_if(app()->isProduction(), 404);
+		// return view("payments.drivers.{$payment->driver->value}", compact('payment'));
+		// return view("payments::{$payment->driver->value}", compact('payment'));
+	}
 
-        $paymentService->completePayment()->run($payment);
+	public function complete(Payment $payment, PaymentService $paymentService)
+	{
+		abort_unless($payment->status->isPending(), 404);
+		abort_unless($payment->driver->isTest(), 404);
+		abort_if(app()->isProduction(), 404);
 
-        return redirect()->route('merch.payment.success', [
-            'uuid' => $payment->uuid,
-        ]);
-    }
+		$paymentService->completePayment()->run($payment);
 
-    public function cancel(Payment $payment, PaymentService $paymentService)
-    {
-        abort_unless($payment->status->isPending(), 404);
-        abort_unless($payment->driver->isTest(), 404);
-        abort_if(app()->isProduction(), 404);
+		return redirect()->route('merches.payments.success', [
+			'uuid' => $payment->uuid,
+		]);
+	}
 
-        $paymentService->cancelPayment()->run($payment);
+	public function cancel(Payment $payment, PaymentService $paymentService)
+	{
+		abort_unless($payment->status->isPending(), 404);
+		abort_unless($payment->driver->isTest(), 404);
+		abort_if(app()->isProduction(), 404);
 
-        return redirect()->route('merch.payment.failure', [
-            'uuid' => $payment->uuid,
-        ]);
-    }
+		$paymentService->cancelPayment()->run($payment);
 
-    public function success(
-        Request $request,
-        Payment $payment,
-        PaymentService $paymentService
-    ) {
-        $uuid = $request->input('uuid');
+		return redirect()->route('merches.payments.failure', [
+			'uuid' => $payment->uuid,
+		]);
+	}
 
-        abort_unless(Str::isUuid($uuid), 404);
+	public function success(
+		Request $request,
+		Payment $payment,
+		PaymentService $paymentService
+	) {
+		$uuid = $request->input('uuid');
 
-        $payment = $paymentService
-            ->getPayments()
-            ->uuid($uuid)
-            ->first();
+		abort_unless(Str::isUuid($uuid), 404);
 
-        abort_unless($payment, 404);
+		$payment = $paymentService
+			->getPayments()
+			->uuid($uuid)
+			->first();
 
-        return view('merch.payment.success', compact('payment'));
-    }
+		abort_unless($payment, 404);
 
-    public function failure(
-        Request $request,
-        Payment $payment,
-        PaymentService $paymentService
-    ) {
-        $uuid = $request->input('uuid');
+		return view('merches.payments.success', compact('payment'));
+	}
 
-        abort_unless(Str::isUuid($uuid), 404);
+	public function failure(
+		Request $request,
+		Payment $payment,
+		PaymentService $paymentService
+	) {
+		$uuid = $request->input('uuid');
 
-        $payment = $paymentService
-            ->getPayments()
-            ->uuid($uuid)
-            ->first();
+		abort_unless(Str::isUuid($uuid), 404);
 
-        abort_unless($payment, 404);
+		$payment = $paymentService
+			->getPayments()
+			->uuid($uuid)
+			->first();
 
-        return view('merch.payment.failure', compact('payment'));
-    }
+		abort_unless($payment, 404);
+
+		return view('merches.payments.failure', compact('payment'));
+	}
 }

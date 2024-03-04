@@ -6,23 +6,31 @@ use App\Support\Values\AmountValue;
 
 function currency(): string
 {
-    return session('currency', Currency::MAIN);
+	return session('currency', Currency::MAIN);
 }
 
 function convert(AmountValue $amount): AmountValue
 {
-    /** @var CurrencyService */
-    $service = app(CurrencyService::class);
+	/** @var CurrencyService */
+	$service = app(CurrencyService::class);
 
-    return $service->convert()
-        ->from(Currency::MAIN)
-        ->to(currency())
-        ->run($amount);
+	return $service->convert()
+		->from(Currency::MAIN)
+		->to(currency())
+		->run($amount);
 }
 
 function money(AmountValue $amount, string $currency): string
 {
-    $amount = $amount->add(new AmountValue(0), 2);
+	$amount = $amount->add(new AmountValue(0), 2);
 
-    return "{$amount} {$currency}";
+	$amount = number_format($amount->value(), 2, ',', ' ');
+
+	$postfix = match ($currency) {
+		Currency::RUB => ' ₽',
+		Currency::USD => ' $',
+		Currency::EUR => ' €'
+	};
+
+	return "{$amount} {$postfix}";
 }

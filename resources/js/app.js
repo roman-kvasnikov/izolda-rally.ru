@@ -2,6 +2,14 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import vueNumberFormat from 'vue-number-format';
+import VueTheMask from 'vue-the-mask';
+
+import ContactFormComponent from './components/ContactFormComponent.vue';
+
+import MerchesComponent from './components/MerchesComponent.vue';
+import CartComponent from './components/CartComponent.vue';
+import OrdersComponent from './components/OrdersComponent.vue';
+import PaymentsComponent from './components/PaymentsComponent.vue';
 
 const app = createApp( {} );
 
@@ -15,64 +23,16 @@ app.use( vueNumberFormat, {
 	isInteger: false
 } );
 
-import ContactFormComponent from './components/ContactFormComponent.vue';
+app.use( VueTheMask );
+
 app.component( 'ContactFormComponent', ContactFormComponent );
 
-import MerchComponent from './components/MerchComponent.vue';
-app.component( 'MerchComponent', MerchComponent );
-
-import CartComponent from './components/CartComponent.vue';
+app.component( 'MerchesComponent', MerchesComponent );
 app.component( 'CartComponent', CartComponent );
-
-import ProductsComponent from './components/Products/ProductsComponent.vue';
-app.component( 'ProductsComponent', ProductsComponent );
+app.component( 'OrdersComponent', OrdersComponent );
+app.component( 'PaymentsComponent', PaymentsComponent );
 
 app.mount( '#app' );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { createApp } from 'vue';
-// import { createRouter, createWebHistory } from 'vue-router';
-// import App from './App.vue';
-
-// const router = createRouter( {
-// 	routes: [ {
-// 		path: '/', component: () => import( './views/Home.vue' )
-// 	} ],
-// 	history: createWebHistory()
-// } )
-
-// const app = createApp( App );
-// app.use( router );
-// app.mount( '#app' );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Cart\GetCartToViewAction;
-use App\Actions\Merch\GetMerchToViewAction;
+use App\Services\Merches\MerchService;
+use App\Services\Carts\CartService;
+
 use Illuminate\Contracts\View\View;
 
 class MerchController extends Controller
 {
-    public function __invoke(): View
-    {
-        $merch = (new GetMerchToViewAction)
-            ->run();
+	public function __invoke(MerchService $merchService, CartService $cartService): View
+	{
+		$merches = $merchService
+			->getMerchesToView()
+			->run();
 
-        $cart = (new GetCartToViewAction)
-            ->run();
+		$cart = $cartService
+			->getCartToView()
+			->run();
 
-        return view('merch.index', compact('merch', 'cart'));
-    }
+		return view('merches.index', compact('merches', 'cart'));
+	}
 }

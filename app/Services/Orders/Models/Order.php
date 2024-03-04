@@ -28,70 +28,107 @@ use Illuminate\Support\Str;
  */
 class Order extends Model implements Payable
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $fillable = [
-        'uuid',
-        'status',
-        'currency_id',
-        'cart_session_id',
-        'amount',
+	protected $fillable = [
+		'uuid',
+		'status',
+		'currency_id',
+		'cart_session_id',
+		'amount',
 
-        'full_name',
-        'email',
-        'phone',
-        'city',
-        'note',
-    ];
+		'last_name',
+		'first_name',
+		'middle_name',
+		'email',
+		'phone',
+		'delivery_method',
+		'city',
+		'postal_code',
+		'region',
+		'address',
+		'cdek_address',
+		'note'
+	];
 
-    protected $casts = [
-        'status' => OrderStatusEnum::class,
-        'amount' => AmountValue::class,
-    ];
+	protected $casts = [
+		'status' => OrderStatusEnum::class,
+		'amount' => AmountValue::class,
+	];
 
-    public static function boot()
-    {
-        parent::boot();
+	public static function boot()
+	{
+		parent::boot();
 
-        static::creating(function (Order $order) {
-            if (empty($order->uuid)) {
-                $order->uuid = (string) Str::uuid();
-            }
-        });
-    }
+		static::creating(function (Order $order) {
+			if (empty($order->uuid)) {
+				$order->uuid = (string) Str::uuid();
+			}
+		});
+	}
 
-    public function getPayableName(): string
-    {
-        return 'Заказ '.$this->uuid;
-    }
+	public function toView(): array
+	{
+		return [
+			'id'				=> $this->id,
+			'uuid'				=> $this->uuid,
+			'status'			=> [
+				'name'				=> $this->status->name(),
+				'color'				=> $this->status->color(),
+				'is_pending'		=> $this->status->isPending()
+			],
+			'amount'			=> [
+				'value'				=> $this->amount,
+				'formatted'			=> money(convert($this->amount), currency()),
+			],
 
-    public function getPayableCurrencyId(): string
-    {
-        return $this->currency_id;
-    }
+			'last_name'			=> $this->last_name,
+			'first_name'		=> $this->first_name,
+			'middle_name'		=> $this->middle_name,
+			'email'				=> $this->email,
+			'phone'				=> $this->phone,
+			'delivery_method'	=> $this->delivery_method,
+			'city'				=> $this->city,
+			'postal_code'		=> $this->postal_code,
+			'region'			=> $this->region,
+			'address'			=> $this->address,
+			'cdek_address'		=> $this->cdek_address,
+			'note'				=> $this->note
+		];
+	}
 
-    public function getPayableAmount(): AmountValue
-    {
-        return $this->amount;
-    }
+	public function getPayableName(): string
+	{
+		return 'Заказ ID: ' . $this->uuid;
+	}
 
-    public function getPayableType(): string
-    {
-        return $this->getMorphClass(); // 'order'
-    }
+	public function getPayableCurrencyId(): string
+	{
+		return $this->currency_id;
+	}
 
-    public function getPayableId(): int
-    {
-        return $this->id;
-    }
+	public function getPayableAmount(): AmountValue
+	{
+		return $this->amount;
+	}
 
-    public function getPayableUrl(): string
-    {
-        return route('orders.show', $this->uuid);
-    }
+	public function getPayableType(): string
+	{
+		return $this->getMorphClass(); // 'order'
+	}
 
-    public function onPaymentComplete(): void
-    {
-        (new OrderService)->completeOrder()->run($this);
-    }
+	public function getPayableId(): int
+	{
+		return $this->id;
+	}
+
+	public function getPayableUrl(): string
+	{
+		return route('orders.show', $this->uuid);
+	}
+
+	public function onPaymentComplete(): void
+	{
+		(new OrderService)->completeOrder()->run($this);
+	}
 }

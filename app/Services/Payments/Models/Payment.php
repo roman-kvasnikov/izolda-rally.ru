@@ -31,45 +31,69 @@ use Illuminate\Support\Str;
  */
 class Payment extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $fillable = [
-        'uuid',
-        'status',
-        'currency_id', 'amount',
-        'payable_type', 'payable_id',
-        'method_id',
+	protected $fillable = [
+		'uuid',
+		'status',
+		'currency_id', 'amount',
+		'payable_type', 'payable_id',
+		'method_id',
 
-        'driver',
-        'driver_currency_id', 'driver_amount',
-        'driver_payment_id',
-    ];
+		'driver',
+		'driver_currency_id', 'driver_amount',
+		'driver_payment_id',
+	];
 
-    protected $casts = [
-        'status' => PaymentStatusEnum::class,
-        'amount' => AmountValue::class,
-        'driver' => PaymentDriverEnum::class,
-        'driver_amount' => AmountValue::class,
-    ];
+	protected $casts = [
+		'status' => PaymentStatusEnum::class,
+		'amount' => AmountValue::class,
+		'driver' => PaymentDriverEnum::class,
+		'driver_amount' => AmountValue::class,
+	];
 
-    public static function boot()
-    {
-        parent::boot();
+	public static function boot()
+	{
+		parent::boot();
 
-        static::creating(function (Payment $payment) {
-            if (empty($payment->uuid)) {
-                $payment->uuid = (string) Str::uuid();
-            }
-        });
-    }
+		static::creating(function (Payment $payment) {
+			if (empty($payment->uuid)) {
+				$payment->uuid = (string) Str::uuid();
+			}
+		});
+	}
 
-    public function payable(): MorphTo
-    {
-        return $this->morphTo();
-    }
+	public function toView(): array
+	{
+		return [
+			'id'				=> $this->id,
+			'uuid'				=> $this->uuid,
+			'status'			=> [
+				'name'				=> $this->status->name(),
+				'color'				=> $this->status->color(),
+				'is_pending'		=> $this->status->isPending()
+			],
+			'amount'			=> [
+				'value'				=> $this->amount,
+				'formatted'			=> money(convert($this->amount), currency()),
+			],
+			'payable'			=> [
+				'name'				=> $this->payable->getPayableName()
+			],
+			'method'	=> [
+				'id'				=> isset($this->method->id) ? $this->method->id : null,
+				'name'				=> isset($this->method->name) ? $this->method->name : null
+			]
+		];
+	}
 
-    public function method(): BelongsTo
-    {
-        return $this->belongsTo(PaymentMethod::class);
-    }
+	public function payable(): MorphTo
+	{
+		return $this->morphTo();
+	}
+
+	public function method(): BelongsTo
+	{
+		return $this->belongsTo(PaymentMethod::class);
+	}
 }

@@ -10,32 +10,33 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CreateOrderAction
 {
-    private readonly Collection $cart;
+	private readonly Collection $cart;
 
-    public function cart(Collection $cart): static
-    {
-        $this->cart = $cart;
+	public function cart(Collection $cart): static
+	{
+		$this->cart = $cart;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public function run(): Order
-    {
-        $order_price = $this->cart->sum(
-            function ($cartItem) {
-                return $cartItem->merch->price->mul(new AmountValue($cartItem->quantity))->value();
-            }
-        );
+	public function run(): Order
+	{
+		$order_price = $this->cart->sum(
+			function ($cartItem) {
+				return $cartItem->merch->price->mul(new AmountValue($cartItem->quantity))->value();
+			}
+		);
 
-        return Order::updateOrCreate(
-            [
-                'cart_session_id' => $this->cart->first()->session_id,
-                'status' => OrderStatusEnum::pending,
-            ],
-            [
-                'currency_id' => Currency::RUB,
-                'amount' => new AmountValue($order_price),
-            ]
-        );
-    }
+		return Order::query()
+			->updateOrCreate(
+				[
+					'cart_session_id' => $this->cart->first()->session_id,
+					'status' => OrderStatusEnum::pending,
+				],
+				[
+					'currency_id' => Currency::RUB,
+					'amount' => new AmountValue($order_price),
+				]
+			);
+	}
 }

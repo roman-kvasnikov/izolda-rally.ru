@@ -5,7 +5,7 @@
 			<input type="text" name="name" autocomplete="on" placeholder="Ваше Имя *" v-model="data.name" @focus="errors.name = null" />
 			<span class="field-error" v-if="errors.name">
 				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="field-error-message text-danger">{{ this.errors.name[ 0 ] }}</span>
+				<span class="field-error-message text-danger">{{ errors.name[ 0 ] }}</span>
 			</span>
 		</div>
 		<div class="field-input email" :class="[ errors.email ? 'border border-danger border-2' : '' ]">
@@ -13,7 +13,7 @@
 			<input type="text" name="email" autocomplete="on" placeholder="Ваш E-Mail *" v-model="data.email" @focus="errors.email = null" />
 			<span class="field-error" v-if="errors.email">
 				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="field-error-message text-danger">{{ this.errors.email[ 0 ] }}</span>
+				<span class="field-error-message text-danger">{{ errors.email[ 0 ] }}</span>
 			</span>
 		</div>
 		<div class="field-input subject w-100" :class="[ errors.subject ? 'border border-danger border-2' : '' ]">
@@ -21,7 +21,7 @@
 			<input type="text" name="subject" autocomplete="on" placeholder="Тема сообщения *" v-model="data.subject" @focus="errors.subject = null" />
 			<span class="field-error" v-if="errors.subject">
 				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="field-error-message text-danger">{{ this.errors.subject[ 0 ] }}</span>
+				<span class="field-error-message text-danger">{{ errors.subject[ 0 ] }}</span>
 			</span>
 		</div>
 		<div class="field-input message" :class="[ errors.message ? 'border border-danger border-2' : '' ]">
@@ -29,7 +29,7 @@
 			<textarea name="message" placeholder="Ваше сообщение *" v-model="data.message" @focus="errors.message = null"></textarea>
 			<span class="field-error" v-if="errors.message">
 				<span class="field-error-icon"><i class="fa-solid fa-triangle-exclamation m-0 p-0 text-danger"></i></span>
-				<span class="field-error-message text-danger">{{ this.errors.message[ 0 ] }}</span>
+				<span class="field-error-message text-danger">{{ errors.message[ 0 ] }}</span>
 			</span>
 		</div>
 

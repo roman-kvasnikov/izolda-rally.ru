@@ -1,24 +1,25 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\CrewController;
-use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\GoalsController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\MerchController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\CrewController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TechController;
+use App\Http\Controllers\GoalsController;
+use App\Http\Controllers\ContactsController;
+
+use App\Http\Controllers\CurrencyController;
+
+use App\Http\Controllers\MerchController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\PaymentController;
+
 use App\Services\Orders\Factories\OrderFactory;
+
 use Illuminate\Support\Facades\Route;
 
-Route::get('/input_mask', function () {
-    return view('input_mask');
-});
 
 Route::get('/', IndexController::class)->name('index');
 Route::get('/crew', CrewController::class)->name('crew');
@@ -28,27 +29,53 @@ Route::get('/tech', TechController::class)->name('tech');
 Route::get('/goals', GoalsController::class)->name('goals');
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts');
 
-Route::get('/merch', MerchController::class)->name('merch');
 
-Route::prefix('/merch')->as('merch.')->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/merches', MerchController::class)->name('merches');
 
-    Route::controller(OrderController::class)->prefix('/order')->as('order.')->group(function () {
-        Route::get('/create', 'create')->name('create');
-        Route::get('/{order:uuid}', 'show')->name('show')->whereUuid('order');
-        Route::post('/{order:uuid}/payment', 'payment')->name('payment')->whereUuid('order');
-    });
+Route::prefix('/merches')
+	->as('merches.')
+	->group(function () {
+		Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-    Route::controller(PaymentController::class)->prefix('/payment')->as('payment.')->group(function () {
-        Route::get('/{payment:uuid}/checkout', 'checkout')->name('checkout')->whereUuid('payment');
-        Route::post('/{payment:uuid}/method', 'method')->name('method')->whereUuid('payment');
-        Route::get('/{payment:uuid}/process', 'process')->name('process')->whereUuid('payment');
-        Route::post('/{payment:uuid}/complete', 'complete')->name('complete')->whereUuid('payment');
-        Route::post('/{payment:uuid}/cancel', 'cancel')->name('cancel')->whereUuid('payment');
-        Route::get('/success', 'success')->name('success');
-        Route::get('/failure', 'failure')->name('failure');
-    });
-});
+		Route::controller(OrderController::class)
+			->prefix('/orders')
+			->as('orders.')
+			->group(function () {
+				Route::get('/create', 'create')->name('create');
+				Route::get('/{order:uuid}', 'show')->name('show')->whereUuid('order');
+				// Route::post('/{order:uuid}/payment', 'payment')->name('payment')->whereUuid('order'); // Перенесено в api.php
+			});
+
+		Route::controller(PaymentController::class)
+			->prefix('/payments')
+			->as('payments.')
+			->group(function () {
+				Route::get('/{payment:uuid}/checkout', 'checkout')->name('checkout')->whereUuid('payment');
+				// Route::post('/{payment:uuid}/method', 'method')->name('method')->whereUuid('payment'); // Перенесено в api.php
+				Route::get('/{payment:uuid}/process', 'process')->name('process')->whereUuid('payment');
+				Route::post('/{payment:uuid}/complete', 'complete')->name('complete')->whereUuid('payment');
+				Route::post('/{payment:uuid}/cancel', 'cancel')->name('cancel')->whereUuid('payment');
+				Route::get('/success', 'success')->name('success');
+				Route::get('/failure', 'failure')->name('failure');
+			});
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Education //
 Route::get('/order-factory', [OrderFactory::class, 'create']);

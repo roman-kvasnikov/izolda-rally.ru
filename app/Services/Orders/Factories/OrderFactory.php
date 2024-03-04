@@ -13,20 +13,20 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class OrderFactory extends Factory
 {
-    protected $model = Order::class;
+	protected $model = Order::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            'uuid' => $this->faker->uuid(),
-            'status' => OrderStatusEnum::pending,
-            'currency_id' => Currency::RUB,
-            'amount' => new AmountValue($this->faker->randomFloat(2, 1, 100000)),
-        ];
-    }
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function definition(): array
+	{
+		return [
+			'uuid' => $this->faker->uuid(),
+			'status' => OrderStatusEnum::pending,
+			'currency_id' => Currency::RUB,
+			'amount' => new AmountValue($this->faker->randomFloat(2, 1, 100000)),
+		];
+	}
 }

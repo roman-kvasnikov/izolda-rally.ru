@@ -2,53 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Cart\AddToCartAction;
-use App\Actions\Cart\GetCartToViewAction;
-use App\Actions\Cart\RemoveFromCartAction;
-use App\Http\Requests\CartRequest;
+use App\Services\Carts\CartService;
+use App\Services\Carts\Requests\CartRequest;
+
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
 class CartController extends Controller
 {
-    public function index(): View
-    {
-        $cart = (new GetCartToViewAction)
-            ->run();
+	public function index(CartService $cartService): View
+	{
+		$cart = $cartService
+			->getCartToView()
+			->run();
 
-        return view('merch.cart', compact('cart'));
-    }
+		return view('merches.cart', compact('cart'));
+	}
 
-    public function add(CartRequest $request): JsonResponse
-    {
-        (new AddToCartAction)
-            ->run($request->merch_id);
+	public function add(CartService $cartService, CartRequest $request): JsonResponse
+	{
+		$cartService
+			->addToCart($request->validated())
+			->run();
 
-        return response()->json(
-            (new GetCartToViewAction)
-                ->run()
-        );
-    }
+		return response()->json(
+			$cartService
+				->getCartToView()
+				->run()
+		);
+	}
 
-    public function remove(CartRequest $request): JsonResponse
-    {
-        (new RemoveFromCartAction)
-            ->run($request->merch_id);
+	public function remove(CartService $cartService, CartRequest $request): JsonResponse
+	{
+		$cartService
+			->removeFromCart($request->validated())
+			->run();
 
-        return response()->json(
-            (new GetCartToViewAction)
-                ->run()
-        );
-    }
-
-    public function removeAll(CartRequest $request): JsonResponse
-    {
-        (new RemoveFromCartAction)
-            ->run($request->merch_id, true);
-
-        return response()->json(
-            (new GetCartToViewAction)
-                ->run()
-        );
-    }
+		return response()->json(
+			$cartService
+				->getCartToView()
+				->run()
+		);
+	}
 }
