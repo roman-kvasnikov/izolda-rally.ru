@@ -28,6 +28,7 @@ jobs:
             php artisan storage:link
             php artisan migrate:fresh --force
             php artisan install
+            php artisan db:seed
             php artisan optimize:clear
             php artisan up
             echo "Done!"
@@ -35,7 +36,6 @@ jobs:
 
 
 
-# php artisan install
 # php artisan db:seed
 # php artisan optimize:clear
 # php artisan up
