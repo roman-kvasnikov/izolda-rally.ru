@@ -24,7 +24,11 @@ jobs:
             git pull origin master
             php artisan down
             php composer.phar install
-            php artisan migrate --force
+            php artisan key:generate
+			php artisan storage:link
+            php artisan migrate:fresh --force
+			php artisan install
+			php artisan db:seed
             php artisan optimize:clear
             php artisan up
             echo "Done!"
