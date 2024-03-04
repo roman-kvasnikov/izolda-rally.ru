@@ -85,7 +85,7 @@
 					<div class="col-xl-8 col-md-6 col-sm-6 align-self-center text-start px-0 py-2">
 						<a href="/merches" class="btn btn-lg btn-default"><i class="fa-solid fa-arrow-left pe-2"></i> Назад к выбору</a>
 					</div>
-					<div class="col-xl-4 col-md-6 col-sm-6 align-self-center text-end pe-2">
+					<div v-if="methods.length > 0" class="col-xl-4 col-md-6 col-sm-6 align-self-center text-end pe-2">
 						<a href="#" @click.prevent="ToProceed" class="btn btn-lg btn-primary px-4">
 							<i v-if="is_loading" class="fas fa-spinner fa-spin text-center"></i>
 							<span v-else>Продолжить</span>
