@@ -57,7 +57,7 @@
 				<div class="row align-items-top">
 
 					<div class="col-12 p-2">
-						<div v-if="!methods" class="text-danger text-center p-3">
+						<div v-if="methods.length == 0" class="text-danger text-center p-3">
 							Извините, оплата временно недоступна
 						</div>
 						<div v-else class="row align-items-center m-2">
