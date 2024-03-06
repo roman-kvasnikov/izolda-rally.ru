@@ -14,7 +14,7 @@ final class FakerImageProvider extends Base
 
 		Storage::disk('public')->put(
 			$name,
-			file_get_contents('https://loremflickr.com/' . $width . '/' . $height . '/rally')
+			file_get_contents('https://loremflickr.com/' . $width . '/' . $height)
 		);
 
 		return $name;
