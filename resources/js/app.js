@@ -1,5 +1,6 @@
 import './bootstrap';
 import { createApp } from 'vue';
+import VueTheMask from 'vue-the-mask';
 
 import ContactFormComponent from './components/ContactFormComponent.vue';
 
@@ -7,6 +8,7 @@ import MerchesComponent from './components/MerchesComponent.vue';
 import CartComponent from './components/CartComponent.vue';
 import OrdersComponent from './components/OrdersComponent.vue';
 import PaymentsComponent from './components/PaymentsComponent.vue';
+
 
 const app = createApp( {
 	components: {
@@ -18,6 +20,8 @@ const app = createApp( {
 		PaymentsComponent,
 	}
 } );
+
+app.use( VueTheMask );
 
 app.mount( '#app' );
 
