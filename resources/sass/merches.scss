@@ -1,5 +1,6 @@
 .merches,
-.cart {
+.cart,
+.order {
     position: relative;
 
     a.shopping-cart {
@@ -46,5 +47,11 @@
 
     .remove_item_link {
         font-size: 25px;
+    }
+
+    .dadata {
+        .dropdown-menu:empty {
+            display: none !important;
+        }
     }
 }

@@ -29,7 +29,7 @@ export default defineComponent( {
 	{
 		const query = ref( '' );
 		const classes = reactive( {
-			container: props.is_error ? 'is-invalid' : '',
+			container: props.is_error ? 'dadata is-invalid' : 'dadata',
 			input: props.is_error ? 'form-control is-invalid' : 'form-control',
 			suggestions: 'dropdown-menu d-flex flex-column',
 			suggestionItem: 'dropdown-item btn',
