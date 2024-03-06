@@ -52,7 +52,7 @@
 								Фамилия:
 							</div>
 							<div class="col-8">
-								<dadata-component type="fio" :autocomplete="true" v-model="order_data.last_name" :is_error="order_data_errors.last_name ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.last_name" :class="[ order_data_errors.last_name ? 'is-invalid' : '' ]">
 								<div v-if="order_data_errors.last_name" class="invalid-feedback">
 									{{ order_data_errors.last_name[ 0 ] }}
 								</div>
@@ -64,7 +64,7 @@
 								Имя:
 							</div>
 							<div class="col-8">
-								<dadata-component type="fio" :autocomplete="true" v-model="order_data.first_name" :is_error="order_data_errors.first_name ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.first_name" :class="[ order_data_errors.first_name ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.first_name">
 									{{ order_data_errors.first_name[ 0 ] }}
 								</div>
@@ -76,7 +76,7 @@
 								Отчество:
 							</div>
 							<div class="col-8">
-								<dadata-component type="fio" :autocomplete="true" v-model="order_data.middle_name" :is_error="order_data_errors.middle_name ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.middle_name" :class="[ order_data_errors.middle_name ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.middle_name">
 									{{ order_data_errors.middle_name[ 0 ] }}
 								</div>
@@ -88,7 +88,7 @@
 								E-Mail:
 							</div>
 							<div class="col-8">
-								<dadata-component type="email" :autocomplete="true" v-model="order_data.email" :is_error="order_data_errors.email ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.email" :class="[ order_data_errors.email ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.email">
 									{{ order_data_errors.email[ 0 ] }}
 								</div>
@@ -132,7 +132,7 @@
 								Индекс:
 							</div>
 							<div class="col-8">
-								<input type="text" autocomplete="on" class="form-control" :autocomplete="true" v-model="order_data.postal_code" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]">
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.postal_code" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.postal_code">
 									{{ order_data_errors.postal_code[ 0 ] }}
 								</div>
@@ -144,7 +144,7 @@
 								Регион:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'region'" :toBound="'region'" :autocomplete="true" v-model="order_data.region" :is_error="order_data_errors.region ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.region" :class="[ order_data_errors.region ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.region">
 									{{ order_data_errors.region[ 0 ] }}
 								</div>
@@ -156,7 +156,7 @@
 								Город:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'city'" :toBound="'city'" :locationOptions="{ region: order_data.region }" :autocomplete="true" v-model="order_data.city" :is_error="order_data_errors.city ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.city" :class="[ order_data_errors.city ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.city">
 									{{ order_data_errors.city[ 0 ] }}
 								</div>
@@ -168,7 +168,7 @@
 								Адрес:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'street'" :toBound="'flat'" :locationOptions="{ region: order_data.region, city: order_data.city }" :autocomplete="true" v-model="order_data.address" :is_error="order_data_errors.address ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.address" :class="[ order_data_errors.address ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.address">
 									{{ order_data_errors.address[ 0 ] }}
 								</div>
@@ -180,7 +180,7 @@
 								Адрес СДЭК:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'street'" :toBound="'street'" :locationOptions="{ city: order_data.city }" :autocomplete="true" v-model="order_data.cdek_address" :is_error="order_data_errors.cdek_address ? true : false" />
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.cdek_address" :class="[ order_data_errors.cdek_address ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.cdek_address">
 									{{ order_data_errors.cdek_address[ 0 ] }}
 								</div>
@@ -229,14 +229,9 @@
 
 <script>
 import axios from 'axios';
-import DadataComponent from './includes/DadataComponent.vue';
 
 export default {
 	name: "OrdersComponent",
-
-	components: {
-		DadataComponent
-	},
 
 	props:
 	{

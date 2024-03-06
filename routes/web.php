@@ -16,9 +16,15 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\TestController;
+
 use App\Services\Orders\Factories\OrderFactory;
 
 use Illuminate\Support\Facades\Route;
+
+
+
+Route::get('/test', TestController::class);
 
 
 Route::get('/', IndexController::class)->name('index');

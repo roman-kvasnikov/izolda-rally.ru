@@ -1,8 +1,5 @@
-
 import './bootstrap';
 import { createApp } from 'vue';
-import vueNumberFormat from 'vue-number-format';
-import VueTheMask from 'vue-the-mask';
 
 import ContactFormComponent from './components/ContactFormComponent.vue';
 
@@ -11,26 +8,16 @@ import CartComponent from './components/CartComponent.vue';
 import OrdersComponent from './components/OrdersComponent.vue';
 import PaymentsComponent from './components/PaymentsComponent.vue';
 
-const app = createApp( {} );
+const app = createApp( {
+	components: {
+		ContactFormComponent,
 
-app.use( vueNumberFormat, {
-	prefix: '',
-	suffix: ' руб.',
-	decimal: ',',
-	thousand: ' ',
-	precision: 2,
-	acceptNegative: true,
-	isInteger: false
+		MerchesComponent,
+		CartComponent,
+		OrdersComponent,
+		PaymentsComponent,
+	}
 } );
-
-app.use( VueTheMask );
-
-app.component( 'ContactFormComponent', ContactFormComponent );
-
-app.component( 'MerchesComponent', MerchesComponent );
-app.component( 'CartComponent', CartComponent );
-app.component( 'OrdersComponent', OrdersComponent );
-app.component( 'PaymentsComponent', PaymentsComponent );
 
 app.mount( '#app' );
 
@@ -40,6 +27,36 @@ app.mount( '#app' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import vueNumberFormat from 'vue-number-format';
+// app.use( vueNumberFormat, {
+// 	prefix: '',
+// 	suffix: ' руб.',
+// 	decimal: ',',
+// 	thousand: ' ',
+// 	precision: 2,
+// 	acceptNegative: true,
+// 	isInteger: false
+// } );
+
+// import VueTheMask from 'vue-the-mask';
+// app.use( VueTheMask );
 
 
 

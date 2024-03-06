@@ -6,52 +6,54 @@ use App\Services\Tinkoff\Exceptions\TinkoffException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
+// Данный класс это чисто работа с тиньковым, формирование запросов, создание токена
+
 class TinkoffClient
 {
-    public function __construct(
-        public TinkoffService $tinkoff
-    ) {
-        //
-    }
+	public function __construct(
+		public TinkoffService $tinkoff
+	) {
+		//
+	}
 
-    public static function make(TinkoffService $tinkoff): static
-    {
-        return new static($tinkoff);
-    }
+	public static function make(TinkoffService $tinkoff): static
+	{
+		return new static($tinkoff);
+	}
 
-    public function post(string $url, array $data): array
-    {
-        $data['Token'] = $this->createToken($data);
+	public function post(string $url, array $data): array
+	{
+		$data['Token'] = $this->createToken($data);
 
-        $response = $this->client()->post($url, $data);
+		$response = $this->client()->post($url, $data);
 
-        $response = $response->json();
+		$response = $response->json();
 
-        if ($response['Success'] === false) {
-            throw new TinkoffException($response['Details']);
-        }
+		if ($response['Success'] === false) {
+			throw new TinkoffException($response['Details']);
+		}
 
-        return $response;
-    }
+		return $response;
+	}
 
-    public function client(): PendingRequest
-    {
-        return Http::baseUrl('https://securepay.tinkoff.ru/v2');
-    }
+	public function client(): PendingRequest
+	{
+		return Http::baseUrl('https://securepay.tinkoff.ru/v2');
+	}
 
-    public function createToken(array $data): string
-    {
-        unset($data['Token']);
+	public function createToken(array $data): string
+	{
+		unset($data['Token']);
 
-        if (isset($data['Success'])) {
-            $data['Success'] = $data['Success'] ? 'true' : 'false';
-        }
+		if (isset($data['Success'])) {
+			$data['Success'] = $data['Success'] ? 'true' : 'false';
+		}
 
-        $token = $data;
-        $token['Password'] = $this->tinkoff->config->password;
-        $token = collect($token)->sortKeys()->implode('');
-        $token = hash('sha256', $token);
+		$token = $data;
+		$token['Password'] = $this->tinkoff->config->password;
+		$token = collect($token)->sortKeys()->implode('');
+		$token = hash('sha256', $token);
 
-        return $token;
-    }
+		return $token;
+	}
 }

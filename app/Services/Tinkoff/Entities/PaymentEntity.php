@@ -4,7 +4,7 @@ namespace App\Services\Tinkoff\Entities;
 
 use App\Services\Tinkoff\Enums\PaymentStatusEnum;
 
-// По сути это сущность которую мы будем отправлять в тинькоф для платежа.
+// По сути это сущность которую мы будем отправлять в тинькоф для платежа. И она же приходит от тинькоф когда создаем платеж.
 
 class PaymentEntity
 {
