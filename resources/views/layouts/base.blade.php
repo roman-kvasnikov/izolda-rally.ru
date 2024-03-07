@@ -20,6 +20,8 @@
 
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+	<link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestions.min.css" rel="stylesheet" />
+
 	@vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/bootstrap.js'])
 
 	@production
@@ -58,6 +60,9 @@
 		@include('layouts.includes.footer')
 
 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/js/jquery.suggestions.min.js"></script>
 
 </body>
 

@@ -100,7 +100,7 @@
 								Телефон:
 							</div>
 							<div class="col-8">
-								<input type="tel" autocomplete="on" class="form-control" v-model="order_data.phone" :class="[ order_data_errors.phone ? 'is-invalid' : '' ]">
+								<input type="tel" autocomplete="on" class="form-control" v-model="order_data.phone" v-mask="'+7 (###) ###-##-##'" :class="[ order_data_errors.phone ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.phone">
 									{{ order_data_errors.phone[ 0 ] }}
 								</div>
@@ -132,7 +132,7 @@
 								Индекс:
 							</div>
 							<div class="col-8">
-								<input type="text" autocomplete="on" class="form-control" v-model="order_data.postal_code" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]">
+								<input type="text" autocomplete="on" class="form-control" v-model="order_data.postal_code" v-mask="'######'" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]">
 								<div class="invalid-feedback" v-if="order_data_errors.postal_code">
 									{{ order_data_errors.postal_code[ 0 ] }}
 								</div>

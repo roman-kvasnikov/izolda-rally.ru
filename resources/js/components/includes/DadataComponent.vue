@@ -1,5 +1,5 @@
 <template>
-	<vue-dadata :token="api_token" :url="api_url[ api_type ]" :modelValue="query" :classes="classes" :debounceWait="'0'" />
+	<vue-dadata :token="api_token" :url="api_url[ api_type ]" :modelValue="query" :locationOptions="locationOptions" :classes="classes" :debounceWait="'0'" />
 </template>
 
 <script lang="ts">
@@ -17,6 +17,11 @@ export default defineComponent( {
 		type: {
 			type: String,
 			default: 'fio'
+		},
+
+		locationOptions: {
+			type: Object,
+			default: () => ( {} )
 		},
 
 		is_error: {

@@ -39,7 +39,7 @@
     "src": "resources/fonts/pressuru.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-yxgRVVGH.js",
+    "file": "assets/app-gl46cU4h.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -58,7 +58,7 @@
     ]
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-zfnpHojt.css",
+    "file": "assets/app-DHn257xs.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }

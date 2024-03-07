@@ -4,10 +4,10 @@ import VueTheMask from 'vue-the-mask';
 
 import ContactFormComponent from './components/ContactFormComponent.vue';
 
-import MerchesComponent from './components/MerchesComponent.vue';
-import CartComponent from './components/CartComponent.vue';
-import OrdersComponent from './components/OrdersComponent.vue';
-import PaymentsComponent from './components/PaymentsComponent.vue';
+import MerchesComponent from './components/merches/MerchesComponent.vue';
+import CartComponent from './components/merches/CartComponent.vue';
+import OrdersComponent from './components/merches/OrdersComponent.vue';
+import PaymentsComponent from './components/merches/PaymentsComponent.vue';
 
 
 const app = createApp( {

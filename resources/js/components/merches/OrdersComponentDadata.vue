@@ -132,7 +132,8 @@
 								Индекс:
 							</div>
 							<div class="col-8">
-								<input type="text" autocomplete="on" class="form-control" :autocomplete="true" v-model="order_data.postal_code" v-mask="'######'" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]">
+								<!-- <input type="text" autocomplete="on" class="form-control" :autocomplete="true" v-model="order_data.postal_code" v-mask="'######'" :class="[ order_data_errors.postal_code ? 'is-invalid' : '' ]"> -->
+								<dadata-component type="address" :autocomplete="true" v-model="order_data.postal_code" v-model:suggestion="suggestions.postal_code" v-mask="'######'" :is_error="order_data_errors.postal_code ? true : false" />
 								<div class="invalid-feedback" v-if="order_data_errors.postal_code">
 									{{ order_data_errors.postal_code[ 0 ] }}
 								</div>
@@ -144,7 +145,7 @@
 								Регион:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'region'" :toBound="'region'" :autocomplete="true" v-model="order_data.region" :is_error="order_data_errors.region ? true : false" />
+								<dadata-component type="address" :fromBound="'region'" :toBound="'area'" :autocomplete="true" v-model="order_data.region" v-model:suggestion="suggestions.region" :is_error="order_data_errors.region ? true : false" />
 								<div class="invalid-feedback" v-if="order_data_errors.region">
 									{{ order_data_errors.region[ 0 ] }}
 								</div>
@@ -156,7 +157,7 @@
 								Город:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'city'" :toBound="'city'" :locationOptions="{ region: order_data.region }" :autocomplete="true" v-model="order_data.city" :is_error="order_data_errors.city ? true : false" />
+								<dadata-component type="address" :fromBound="'city'" :toBound="'settlement'" :locationOptions="{ locations: [ { 'region': Object.keys( suggestions.region ).length !== 0 ? suggestions.region.data.region : '' } ] }" :autocomplete="true" v-model="order_data.city" v-model:suggestion="suggestions.city" :is_error="order_data_errors.city ? true : false" />
 								<div class="invalid-feedback" v-if="order_data_errors.city">
 									{{ order_data_errors.city[ 0 ] }}
 								</div>
@@ -168,7 +169,7 @@
 								Адрес:
 							</div>
 							<div class="col-8">
-								<dadata-component type="address" :fromBound="'street'" :toBound="'flat'" :locationOptions="{ region: order_data.region, city: order_data.city }" :autocomplete="true" v-model="order_data.address" :is_error="order_data_errors.address ? true : false" />
+								<dadata-component type="address" :fromBound="'street'" :toBound="'flat'" :locationOptions="{ locations: [ { 'city': Object.keys( suggestions.city ).length !== 0 ? suggestions.city.data.city : '' } ] }" :autocomplete="true" v-model="order_data.address" :is_error="order_data_errors.address ? true : false" />
 								<div class="invalid-feedback" v-if="order_data_errors.address">
 									{{ order_data_errors.address[ 0 ] }}
 								</div>
@@ -229,7 +230,7 @@
 
 <script>
 import axios from 'axios';
-import DadataComponent from './includes/DadataComponent.vue';
+import DadataComponent from '../includes/DadataComponent.vue';
 
 export default {
 	name: "OrdersComponent",
@@ -247,6 +248,12 @@ export default {
 	{
 		return {
 			order_data: this.order,
+			suggestions: {
+				postal_code: [],
+				region: [],
+				city: [],
+				address: []
+			},
 			order_data_errors: {},
 
 			is_loading: false,
@@ -274,6 +281,18 @@ export default {
 					this.is_loading = false;
 				} );
 		}
+	},
+
+	created ()
+	{
+		this.$watch( () => this.suggestions.postal_code, () =>
+		{
+			console.log( this.suggestions.postal_code );
+
+			this.order_data.region = this.suggestions.postal_code.data.region_with_type; // нужно событие выбора
+			this.order_data.city = this.suggestions.postal_code.data.city_with_type;
+			this.order_data.address = this.suggestions.postal_code.data.text;
+		} )
 	}
 };
 </script>
